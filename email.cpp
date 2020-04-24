@@ -30,8 +30,9 @@ int main(){
                     else
                         count++;
                 }
-                if(count==0)
+                if(count==0 || (i==s[0].length()-1 && j!=s[1].length()))
                 {
+                    count=0;
                     cout<<"NO\n";
                     break;
                 }
