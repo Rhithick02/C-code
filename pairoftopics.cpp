@@ -1,26 +1,34 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define lli long long
 int main()
 {
-    int n,count=0;
+    lli n,count=0;
     cin>>n;
-    int a[n],b[n];
-    vector <int> temp(n);
-    for(int i=0;i<n;i++)
+    lli a[n],b[n];
+    vector <lli> temp;
+    for(lli i=0;i<n;i++)
         cin>>a[i];
-    for(int i=0;i<n;i++)
+    for(lli i=0;i<n;i++)
     {
         cin>>b[i];
-        temp[i]=a[i]-b[i];
+        temp.push_back(a[i]-b[i]);
     }
-    sort(temp.begin(),temp.end(),greater<int>());
-    for(int i=0,j=n-1;i<n;i++)
+    sort(temp.begin(),temp.end());
+    lli buf=upper_bound(temp.begin(),temp.end(),0)-temp.begin();
+    lli size=n-buf;
+    count=size*(size-1)/2;
+    if(temp[n-1]<=0)
+        cout<<"0";
+    else
     {
-        for(;j>i && (temp[i]+temp[j]<=0);j--);
-        if(j-i<=0)
-            break;
-        count+=j-i;
-    }    
-    cout<<count;
+        for(lli i=0;temp[i]<=0;i++)
+        {
+            buf=upper_bound(temp.begin(),temp.end(),abs(temp[i]))-temp.begin();
+            count+=n-buf;
+        }
+        cout<<count;
+    }
+    cout<<endl;        
     return 0;
 }
