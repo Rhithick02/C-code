@@ -1,42 +1,29 @@
-// C++ program to print all prime factors 
-#include <bits/stdc++.h> 
-using namespace std; 
-
-// A function to print all prime 
-// factors of a given number n 
-void primeFactors(int n) 
-{ 
-	// Print the number of 2s that divide n 
-	while (n % 2 == 0) 
-	{ 
-		cout << 2 << " "; 
-		n = n/2; 
-	} 
-
-	// n must be odd at this point. So we can skip 
-	// one element (Note i = i +2) 
-	for (int i = 3; i <= sqrt(n); i = i + 2) 
-	{ 
-		// While i divides n, print i and divide n 
-		while (n % i == 0) 
-		{ 
-			cout << i << " "; 
-			n = n/i; 
-		} 
-	} 
-
-	// This condition is to handle the case when n 
-	// is a prime number greater than 2 
-	if (n > 2) 
-		cout << n << " "; 
-} 
-
-/* Driver code */
-int main() 
-{ 
-	int n = 27; 
-	primeFactors(n); 
-	return 0; 
-} 
-
-// This is code is contributed by rathbhupendra 
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+int main(){	
+	bool ar[1001];
+	ar[0]=0,ar[1]=1,ar[2]=1;
+	int n,k;
+	cin>>n>>k;
+    for(int i=3;i<=1000;i++)
+	{
+		if(i<k)
+		{
+            if(!ar[i-1] || !ar[i-2])
+                ar[i]=1;
+            else 
+                ar[i]=0;
+        }
+        else 
+        {
+            if(!ar[i-1] || !ar[i-2] || !ar[i-k])
+                ar[i]=1;
+            else 
+                ar[i]=0;
+        }
+    }
+	for(int i=0;i<=30;i++)
+		cout<<ar[i]<<" ";
+	return 0;
+}

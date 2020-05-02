@@ -24,7 +24,7 @@ int main(){
         lli prod=1;
         cin>>n;
         if(n==0)
-            cout<<"0\n";
+            cout<<"1\n";
         else if(n==1)
             cout<<"1\n";
         else        
