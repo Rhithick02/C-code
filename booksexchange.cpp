@@ -15,14 +15,14 @@ int main(){
         for(int i=1;i<=n;i++)
         {
             int count=0;
-            for(int j=1;j<=n;)
+            for(int j=i;j<=n;)
             {
                 j=ar[j];
                 count++;
                 if(j==i) 
                     break;
             }
-            cout<<count<<" ";
+            cout<<count<<" ";            
         }
         cout<<endl;
     }
