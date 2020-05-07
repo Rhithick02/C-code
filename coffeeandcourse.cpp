@@ -3,23 +3,40 @@ using namespace std;
 #define lli long long
 #define For(i,n) for(int i=0;i<n;i++)
 int main(){
-    int n,m;
-    lli sum=0;
+    int n,m,flag=-1,fi,la,mid,tot=0;
     cin>>n>>m;
     vector<int> ar(n);
-    For(i,n)
+    For(i,n) 
     {
         cin>>ar[i];
-        sum+=ar[i];
+        tot+=ar[i];
     }
-    sort(ar.begin(),ar.end());
-    if(sum<m)
+    if(tot<m)
         cout<<"-1";
-    else if(sum==m)
-        cout<<n;
-    else 
+    else
     {
-
+        lli sum=0;
+        sort(ar.begin(),ar.end(),greater<int>());
+        fi=1,la=n;        
+        while(la-fi>1)
+        {
+            mid=(fi+la)/2;
+            sum=0;
+            for(int j=0;j<n;j++)
+                sum+=max(0,ar[j]-j/mid);
+            if(sum>=m)
+                la=mid;
+            else
+                fi=mid;
+        }
+        sum=0;
+        for(int j=0;j<n;j++)
+            sum+=max(0,ar[j]-j/fi);
+        if(sum>=m)
+            cout<<fi;
+        else 
+            cout<<la;
     }
-
+    cout<<endl;
+    return 0;
 }
