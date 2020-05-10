@@ -3,14 +3,17 @@ using namespace std;
 #define lli long long
 #define For(i,n) for(int i=0;i<n;i++)
 int main(){
-    int n,count=1;
+    lli n,count=1,ma;
     cin>>n;
-    vector<int> l(n),u(n);
-    For(i,n) cin>>l[i]>>u[i];
+    vector< pair<lli,lli> > ar(n);
+    For(i,n) cin>>ar[i].first>>ar[i].second;
+    sort(ar.begin(),ar.end());
+    ma=ar[0].second;
     for(int i=0;i<n-1;i++)
     {
-        if(u[i]<l[i+1])
+        if(ma<ar[i+1].first)
             count++;
+        ma=max(ma,ar[i+1].second);
     }
     cout<<count<<endl;
     return 0;
