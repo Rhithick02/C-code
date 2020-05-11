@@ -2,10 +2,12 @@
 using namespace std;
 #define lli long long
 #define For(i,n) for(int i=0;i<n;i++)
+#define vi vector<int>
 int main(){
-    set<int> se;
-    int sum=10;
-    sum=min(sum,*se.begin());
-    cout<<sum<<endl;
-    return 0;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string x,y;
+    }
 }
