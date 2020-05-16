@@ -10,7 +10,7 @@ int main(){
     vi ar(n),st(100001);
     For(i,n) cin>>ar[i],st[ar[i]]++;
     maxi=*max_element(ar.begin(),ar.end());
-    for(lli i=maxi;i>1;i--)
+    for(lli i=maxi,j=maxi-1;i>1;i-=2,j-=2)
     {
         if(!st[i]) continue;
         if((i-1)*st[i-1]>i*st[i]+(i-2)*(st[i-2]))
