@@ -8,23 +8,17 @@ int main(){
     lli n,maxi;
     cin>>n;
     vi ar(n),st(100001);
-    For(i,n) cin>>ar[i],st[ar[i]]++;
+    lli dp[100001][2];
+    For(i,n) cin>>ar[i],st[ar[i]]+=ar[i];
     maxi=*max_element(ar.begin(),ar.end());
-    for(lli i=maxi,j=maxi-1;i>1;i-=2,j-=2)
+    dp[0][0]=0;
+    dp[0][1]=st[maxi];
+    for(lli i=maxi,j=0;i>=1;i--,j++)
     {
-        if(!st[i]) continue;
-        if((i-1)*st[i-1]>i*st[i]+(i-2)*(st[i-2]))
-        {
-            sum+=(i-1)*st[i-1];            
-            st[i-2]=0,st[i]=0,st[i-1]=0;
-        }
-        else
-        {
-            sum+=i*st[i];
-            st[i-1]=0;
-        }        
-    }
-    if(!st[2]) sum+=st[1];
+        dp[j+1][1]=max(dp[j][1],dp[j][0]+st[i-1]);
+        dp[j+1][0]=max(dp[j][0],dp[j][1]);
+        sum=max(dp[j+1][1],dp[j+1][0]);
+    }    
     cout<<sum<<endl;
     return 0;
 }

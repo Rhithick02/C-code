@@ -1,25 +1,38 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define lli long long
-#define For(i,n) for(int i=0;i<n;i++)
-#define vi vector<int>
-int main(){
-	lli n,sum=0;
-	cin>>n;
-	vi ar(n),st(100001);
-	For(i,n) cin>>ar[i],st[ar[i]]++;
-	int maxi=*max_element(ar.begin(),ar.end());
-	for(int i=maxi;i>0;i--)
-	{
-		lli temp1=0,temp2=0;
-		while(st[i])
-		{
-			if(i&1) temp1+=i*st[i];
-			else temp2+=i*st[i];
-			i--;
-		}
-		sum+=max(temp1,temp2);
-	}
-	cout<<sum<<endl;
-	return 0;
-}
+#include <bits/stdc++.h> 
+using namespace std; 
+bool checkpossible(long long mask, long long* arr, long long* prefix, long long n,long long k) 
+{ 
+	bool dp[n + 1][k + 1]; 
+	memset(dp, 0, sizeof(dp)); 
+	dp[0][0] = 1;  
+	for (long long i = 1; i <= n; i++)
+		for (long long j = 1; j <= k; j++)
+			for (long long l = i - 1; l >= 0; --l)
+				if (dp[l][j - 1] && (((prefix[i] - prefix[l]) & mask) == mask))
+				{
+                    dp[i][j] = 1; 
+					break; 
+				} 
+	return dp[n][k]; 
+} 
+long long Partition(long long arr[], long long n, long long k) 
+{
+	long long prefix[n+1]; 
+	for (long long i = 1; i <= n; i++) prefix[i]=prefix[i-1] + arr[i]; 
+	long long LOGS = 20; 
+	long long ans = 0; 
+	for (long long i = LOGS; i >= 0; --i)
+		if (checkpossible(ans | (1 << i), arr, prefix, n, k))  
+			ans = ans | (1 << i); 
+	 
+	return ans; 
+}  
+int main() 
+{ 
+    long long n,k;
+    cin>>n>>k;
+    long long arr[n];
+    for(long long i=0;i<n;i++) cin>>arr[i];
+	cout<<Partition(arr, n, k); 
+	return 0; 
+} 

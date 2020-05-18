@@ -7,13 +7,14 @@ using namespace std;
 #define se second
 
 int main(){
-    lli sum=0;
-    int n,k;
-    cin>>n>>k;
-    vi ar(n),pr(n);
-    For(i,n) cin>>ar[i];
-    pr[0]=ar[0];
-    for(int i=1;i<n;i++) pr[i]=pr[i-1]+ar[i];
-    For(i,n) cout<<pr[i]<<" ";
+    int n,m,count=0;
+    cin>>n>>m;
+    while(n!=m)
+    {
+        if(m>n && !(m&1)) m/=2;
+        else m+=1;
+        count++;
+    }
+    cout<<count;
     return 0;
 }

@@ -1,3 +1,4 @@
+//fibonacci series
 #include<bits/stdc++.h>
 using namespace std;
 #define lli long long
@@ -7,13 +8,12 @@ using namespace std;
 #define se second
 
 int main(){
-    lli sum=0;
-    int n,k;
-    cin>>n>>k;
-    vi ar(n),pr(n);
-    For(i,n) cin>>ar[i];
-    pr[0]=ar[0];
-    for(int i=1;i<n;i++) pr[i]=pr[i-1]+ar[i];
-    For(i,n) cout<<pr[i]<<" ";
+    int n;
+    cin>>n;
+    vi fib(n+1);
+    fib[0]=0,fib[1]=1;
+    for(int i=2;i<=n;i++)
+        fib[i]=fib[i-1]+fib[i-2];
+    cout<<fib[n];
     return 0;
 }
