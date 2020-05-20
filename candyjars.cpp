@@ -3,33 +3,24 @@ using namespace std;
 #define lli long long
 #define For(i,n) for(int i=0;i<n;i++)
 #define vi vector<int>
+#define fi first
+#define se second
+
 int main(){
-    lli cost=0,n,k;
-    cin>>n>>k;
-    vector<lli> ar(n);
-    vector< pair<double,lli> > st;
-    For(i,n)
+	int n,k;
+	lli cost=1e18,sum=0;
+	cin>>n>>k;
+	vector<lli> ar(n);
+	For(i,n) cin>>ar[i];
+    For(i,n-1) ar[i+1]=min(ar[i+1],2*ar[i]);
+	for(int i=n-1;i>=0;i--)
     {
-        cin>>ar[i];
-        st.push_back(make_pair(ar[i]/pow(2,i),(lli)pow(2,i)));
+        int store=k/(1<<i);
+        sum+=store*ar[i];
+        k-=(store<<i);
+        if(k>0) cost=min(cost,sum+ar[i]);
+        else cost=min(cost,sum);
     }
-    sort(st.begin(),st.end());    
-    lli temp=k;
-    lli store=(st[0].first*st[0].second);
-    cost+=(temp/st[0].second)*store;
-    temp-=(temp/st[0].second)*st[0].second;    
-    if(temp!=0)
-    {
-        lli bit=temp,count=0,sum=0;
-        while(bit)
-        {
-            if(bit&1) sum+=ar[count];
-            count++;
-            bit=bit>>1;
-        }            
-        cost+=min(sum,store);
-        
-    }       
     cout<<cost<<endl;
-    return 0;
+	return 0;
 }

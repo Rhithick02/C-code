@@ -11,10 +11,9 @@ int main(){
     cin>>t;
     while(t--)
     {
-        int n;
+        int n,count=0;
         cin>>n;
         vi ar(n+1),dp(n+1);
-        For(i,n) cin>>ar[i+1],dp[i]=1;
         for(int i=1;i<=n;i++)
             for(int j=2*i;j<=n;j+=i) if(ar[i]<ar[j]) dp[j]=max(dp[j],dp[i]+1);
         cout<<*max_element(dp.begin(),dp.end())<<endl;

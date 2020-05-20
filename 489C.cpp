@@ -10,20 +10,10 @@ int main(){
         flag=0;
     for(int i=0;i<m;i++)
     {
-        if(s>=9)
-        {
-            big+='9';
-            s-=9;
-        }
-        else
-        {
-            big+=to_string(s);
-            s=0;
-        }
-        
+        if(s>=9) big+='9',s-=9;
+        else big+=to_string(s),s=0;
     }
-    if(s!=0 || flag==0)
-        cout<<"-1 -1";
+    if(s!=0 || flag==0) cout<<"-1 -1";        
     else
     {
         small=big;
