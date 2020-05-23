@@ -6,23 +6,23 @@ using namespace std;
 #define vil vector<long long>
 #define asc(x) x.begin(),x.end()
 #define des(x) x.rbegin(),x.rend()
-#define pb push_back
 #define fi first
 #define se second
 
 int main(){
-    int n;
-    cin>>n;
-    lli x;
-    vector< pair<int,lli> >ar(n);
-    For(i,n)
+    int n,s,flag=0;
+    cin>>n>>s;
+    vi ar(n);
+    For(i,n-1) ar[i]=1;
+    ar[n-1]=s-(n-1);
+    if(s-n<n)
+        cout<<"NO";
+    else
     {
-        cin>>x;
-        int count=0;
-        for(lli j=x;j%3==0;j/=3) count++;
-        ar[i]={-count,x};
+        cout<<"YES\n";
+        For(i,n) cout<<ar[i]<<" ";
+        cout<<endl<<n;
     }
-    sort(asc(ar));
-    For(i,n) cout<<ar[i].se<<" ";
+    cout<<endl;
     return 0;
 }

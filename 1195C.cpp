@@ -11,18 +11,17 @@ using namespace std;
 #define se second
 
 int main(){
-    int n;
+    int n,x;
     cin>>n;
-    lli x;
-    vector< pair<int,lli> >ar(n);
+    vi ar[2];
+    lli dp[2][n+1];
+    memset(dp,0,sizeof(dp));
+    For(i,2) For(j,n) cin>>x,ar[i].pb(x);
     For(i,n)
     {
-        cin>>x;
-        int count=0;
-        for(lli j=x;j%3==0;j/=3) count++;
-        ar[i]={-count,x};
+        dp[0][i+1]=max(dp[1][i]+ar[0][i],dp[0][i]);
+        dp[1][i+1]=max(dp[0][i]+ar[1][i],dp[1][i]);
     }
-    sort(asc(ar));
-    For(i,n) cout<<ar[i].se<<" ";
+    cout<<max(dp[0][n],dp[1][n]);
     return 0;
 }

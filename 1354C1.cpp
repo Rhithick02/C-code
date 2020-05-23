@@ -11,18 +11,15 @@ using namespace std;
 #define se second
 
 int main(){
-    int n;
-    cin>>n;
-    lli x;
-    vector< pair<int,lli> >ar(n);
-    For(i,n)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        cin>>x;
-        int count=0;
-        for(lli j=x;j%3==0;j/=3) count++;
-        ar[i]={-count,x};
+        int n;
+        cin>>n;
+        double pi=acos(-1);
+        double side=1/tan(pi/(2.0*n));
+        cout<<fixed<<setprecision(20)<<side<<endl;
     }
-    sort(asc(ar));
-    For(i,n) cout<<ar[i].se<<" ";
     return 0;
 }
