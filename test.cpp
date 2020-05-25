@@ -3,34 +3,44 @@ using namespace std;
 #define lli long long
 #define For(i,n) for(int i=0;i<n;i++)
 #define vi vector<int>
+#define vil vector<long long>
+#define asc(x) x.begin(),x.end()
+#define des(x) x.rbegin(),x.rend()
+#define pb push_back
 #define fi first
 #define se second
 
-bool possible(lli mask,vector<lli> ar,vector<lli> pref,int n, int k)
+void bfs(vector< pair<lli,lli> >ar[],lli start,lli tot,lli connect)
 {
-    bool dp[n+1][k+1];
-    memset(dp,0,sizeof(dp));
-    dp[0][0]=1;
-    for(int i=1;i<=n;i++)
-        for(int j=1;j<=k;j++)
-            for(int l=i-1;l>=0;l--)
-                if(dp[l][j-1] && ((pref[i]-pref[l])&mask)==mask)
-                {
-                    dp[i][j]=1;
-                    break;
-                }
-    return dp[n][k];
+    set< pair<lli,lli> > te;
+    vil ans(tot);
+    for(lli i=1;i<tot;i++) ans[i]=1e9;
+    te.insert({0,start});
+    lli count=0;
+    while(count<connect)
+    {
+        pair<lli,lli> pa=*te.begin();
+        te.erase(te.begin());
+        if(ans[pa.se]!=1e9) continue;
+        ans[pa.se]=pa.fi;
+        for(auto it: ar[pa.se])
+            te.insert({pa.fi+it.se,it.fi});
+        count++;
+    }
+    for(lli i=2;i<tot;i++) cout<<ans[i]<<" ";
 }
-
 int main(){
-    int n,k;
-    cin>>n>>k;
-    vector<lli> ar(n+1),pref(n+1);
-    For(i,n) cin>>ar[i+1];
-    For(i,n) pref[i+1]=pref[i]+ar[i+1];
-    lli ans=0;
-    for(int i=63;i>=0;i--)
-        if(possible(ans | (lli)pow(2,i),ar,pref,n,k)) ans=(ans | (lli)pow(2,i));
-    cout<<ans;
+    lli n,m,u,v,w;
+    set<lli> st;
+    cin>>n>>m;
+    vector< pair<lli,lli> > ar[n+1];
+    For(i,m)
+    {
+        cin>>u>>v>>w;
+        st.insert(u);
+        st.insert(v);
+        ar[u].pb({v,w});
+    }
+    bfs(ar,1,n+1,st.size());
     return 0;
 }
