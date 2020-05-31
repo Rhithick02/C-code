@@ -5,8 +5,6 @@ int main()
     int n,m,big,pos;
     cin>>m>>n;
     vector <int> can(n),ind(m);
-    for(int i=0;i<m;i++)
-        ind[i]=0;
     for(int i=0;i<n;i++)
     {     
         for(int j=0;j<m;j++)

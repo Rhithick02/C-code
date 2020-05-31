@@ -11,9 +11,8 @@ using namespace std;
 #define se second
 
 int main(){
-    int r,c;
-    cin>>r>>c;
-    int ar[r][c],dp[r][c];
-    For(i,r) For(j,c) cin>>ar[i][j];
-
+    vi ar(5);
+    For(i,5) ar[i]=i;
+    cout<<min_element(ar.begin()+2,ar.begin()+5) - ar.begin()<<endl;
+    return 0;
 }
