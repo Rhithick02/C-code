@@ -14,11 +14,11 @@ int main(){
     string sum="000000000000000000";
     vector<string> st;
     set<lli> te,rte;
-    lli x;
     int t;
     cin>>t;
     while(t--)
     {
+        lli temp=0;
         int q;
         string s;
         cin>>q;
@@ -26,19 +26,21 @@ int main(){
         {
             cin>>s;
             For(i,18)
-                s[i]=;
-            te.insert(x-temp);
-            rte.insert(temp-x);
+            {
+                s[i]=(s[i]-sum[i]+10)%10 + 48;
+                temp = temp*10 + s[i]-'0';
+            }
+            te.insert(temp);
+            rte.insert(-temp);
         }
         else if(q==2)
         {
-            cin>>s;
+            cin>>s;s
             For(i,18) sum[i]=(sum[i]+s[i]-96)%10 + 48;
         }
         else if(q==3)
         {
             cin>>s;
-            lli temp=0;
             For(i,18)
                 temp=temp*10+(s[i]-sum[i]+10)%10;
             if(te.find(temp)!=te.end()) cout<<"YES";
@@ -47,7 +49,6 @@ int main(){
         }
         else
         {
-            lli temp=0;
             For(i,18)
                 temp=temp*10 + (9-sum[i]+48);
             if(rte.lower_bound(-temp)!=rte.end()) 
