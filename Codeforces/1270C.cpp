@@ -15,12 +15,26 @@ using namespace std;
 #define se second
 
 int main(){
-    vector<string> st(3);
-    For(i,3) cin>>st[i];
-    for(int i=0;i<3;i++)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        st[i]="";
+        lli n,sum=0,xorsum=0;
+        cin>>n;
+        vi ar(n);
+        For(i,n)
+        {
+            cin>>ar[i];
+            sum+=ar[i];
+            xorsum=xorsum^ar[i];
+        }
+        if(2*xorsum==sum) cout<<0<<endl;
+        else
+        {
+            cout<<2<<endl;
+            cout<<xorsum<<" "<<sum+xorsum;
+        }
+        cout<<endl;
     }
-    For(i,3) cout<<st[i]<<" ";
     return 0;
 }

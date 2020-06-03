@@ -15,12 +15,27 @@ using namespace std;
 #define se second
 
 int main(){
-    vector<string> st(3);
-    For(i,3) cin>>st[i];
-    for(int i=0;i<3;i++)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        st[i]="";
+        int n;
+        cin>>n;
+        set<int> ar;
+        ar.insert(n);
+        for(int i=2;i<=n;i++)
+        {
+            if(*ar.begin()-n/i<1) 
+            {
+                ar.insert(n/i);
+                break;
+            }
+            ar.insert(n/i);
+        }
+        cout<<ar.size()+*ar.begin()<<endl;
+        For(i,*ar.begin()) cout<<i<<" ";
+        for(auto it: ar) cout<<it<<" ";
+        cout<<endl;
     }
-    For(i,3) cout<<st[i]<<" ";
     return 0;
 }
