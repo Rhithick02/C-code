@@ -15,7 +15,19 @@ using namespace std;
 #define se second
 
 int main(){
-    double ti;
-    cout<<360*1.0/100000000000000;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        lli n;
+        cin>>n;
+        lli temp=n,count=0;
+        while(temp)
+        {
+            if(temp&1) count++;
+            temp=temp>>1;
+        }
+        cout<<2*n-count<<endl;
+    }
     return 0;
 }

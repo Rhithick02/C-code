@@ -15,7 +15,11 @@ using namespace std;
 #define se second
 
 int main(){
-    double ti;
-    cout<<360*1.0/100000000000000;
+    int n,d,e;
+    cin>>n>>d>>e;
+    int ans=n;
+    for(int i=0;i*5*e<=n;i++)
+        ans=min(ans,(n-i*5*e)%d);
+    cout<<ans<<endl;
     return 0;
 }

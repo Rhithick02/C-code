@@ -15,7 +15,18 @@ using namespace std;
 #define se second
 
 int main(){
-    double ti;
-    cout<<360*1.0/100000000000000;
+    lli n,m,q;
+    cin>>n>>m>>q;
+    For(i,q)
+    {
+        lli x1,y1,x2,y2;
+        cin>>x1>>y1>>x2>>y2;
+        lli common=__gcd(n,m);
+        lli grp1=(x1==1? n:m)/common;
+        lli grp2=(x2==1? n:m)/common;
+        if((y1+grp1-1)/grp1!=(y2+grp2-1)/grp2) cout<<"NO";
+        else cout<<"YES";
+        cout<<endl;
+    }
     return 0;
 }
