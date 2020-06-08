@@ -16,30 +16,30 @@ using namespace std;
 
 int main(){
     int n,p,c;
-    pa root;
+    int root;
     set<int>te;
     cin>>n;
-    vpa ar[n+1];
+    vi ar[n+1];
     vi st(n+1);
     For(i,n)
     {
         cin>>p>>c;
-        if(p!=-1) ar[p].pb({i+1,c});
-        else root.fi=i+1,root.se=c;
+        if(p!=-1) ar[p].pb(i+1);
+        else root=i+1;
         st[i+1]=c;
     }
-    queue<pa> q;
+    queue<int> q;
     q.push(root);
     while(!q.empty())
     {
-        pa current=q.front();
+        int current=q.front();
         q.pop();
         int flag=0;
-        if(!ar[current.fi].size() && st[current.fi]==1) te.insert(current.fi);
-        for(auto it: ar[current.fi])
+        if(!ar[current].size() && st[current]==1) te.insert(current);
+        for(auto it: ar[current])
         {
-            if(it.se==1 && current.se==1 && current!=root) flag++;
-            if(flag==ar[current.fi].size()) te.insert(current.fi);
+            if(st[it]==1 && st[current]==1 && current!=root) flag++;
+            if(flag==ar[current].size()) te.insert(current);
             q.push(it);
         }
     }
