@@ -15,5 +15,33 @@ using namespace std;
 #define se second
 
 int main(){
-    
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,flag,count=0;
+        cin>>n>>m;
+        int ar[n][m];
+        For(i,n) For(j,m) cin>>ar[i][j];
+        For(i,n)
+        {
+            For(j,m)
+            {
+                flag=0;
+                if(ar[i][j]) continue;
+                for(int k=0;k<n;k++)
+                    if(ar[k][j]) flag=1;
+                if(!flag)
+                {
+                    for(int k=0;k<m;k++)
+                        if(ar[i][k]) flag=1;
+                }
+                if(!flag) count++,ar[i][j]=1;
+            }
+        }
+        if(count&1) cout<<"Ashish";
+        else cout<<"Vivek";
+        cout<<endl;
+    }
+    return 0;
 }
