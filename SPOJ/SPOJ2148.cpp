@@ -15,12 +15,20 @@ using namespace std;
 #define se second
 
 int main(){
-    int t;
+    lli t;
     cin>>t;
     while(t--)
     {
-        int n;
+        lli n,x,sum=0;
         cin>>n;
+        For(i,n) 
+        {
+            cin>>x;
+            sum=(sum%n+x%n)%n;
+        }
+        if(sum%n==0) cout<<"YES";
+        else cout<<"NO";
+        cout<<endl;
     }
     return 0;
 }
