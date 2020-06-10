@@ -15,32 +15,25 @@ using namespace std;
 #define se second
 
 int main(){
-    int n,count=0;
+    int n,fl=0;
     cin>>n;
-    vector<string> s(n);
     vi ar(n);
-    For(i,n) cin>>s[i];
     For(i,n)
     {
-        int fl=0;
-        For(j,s[i].size())
-        {
-            if(s[i][j]=='(') fl++;
-            else fl--;
-        }
-        ar[i]=fl;
+        cin>>ar[i];
+        if(i && ar[i]<=ar[i-1]) fl=-1;
     }
-    for(auto it: ar) cout<<it<<" ";
-    // vi te(1000001);
-    // For(i,n)
-    // {
-    //     if(ar[i]>=0) te[ar[i]]++;
-    //     else te[100000+abs(ar[i])]++;
-    // }
-    // count+=te[0]/2;
-    // for(int i=1;i<=100000;i++)
-    //     count+=min(te[i],te[100000+i]);
-    // cout<<count<<endl;
+    if(fl==0) cout<<0<<endl;
+    else
+    {
+        fl=0;
+        cout<<n<<endl;
+        cout<<1<<" "<<n<<" "<<200000<<endl;
+        For(i,n-1)
+        {
+            cout<<2<<" "<<i+1<<" "<<ar[i]+200000-fl<<endl;
+            fl++;
+        }
+    }
     return 0;
 }
-
