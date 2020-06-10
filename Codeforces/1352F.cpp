@@ -19,25 +19,21 @@ int main(){
     cin>>t;
     while(t--)
     {
-        int num,flag=1;
-        cin>>num;
-        string s;
-        while(flag)
+        int n0,n1,n2;
+        cin>>n0>>n1>>n2;
+        string s="";
+        if(n0 || n2)
         {
-            num++;
-            flag=0;
-            s=to_string(num);
-            int size=s.length();
-            for(int i=0;i<size/2;i++)
+            if(n1 || n2) For(i,n2+1) s+='1';
+            if(n0) 
             {
-                if(s[i]!=s[size-1-i])
-                {
-                    flag=1;
-                    break;
-                }
+                For(i,n0+1) s+='0';
+                For(i,n1-1) s+=(i&1 ? '0':'1');
             }
+            else For(i,n1) s+=(i&1 ? '1':'0');
         }
-        cout<<num<<endl;
+        else For(i,n1+1) s+=(i&1 ? '0':'1');
+        cout<<s<<endl;
     }
     return 0;
 }
