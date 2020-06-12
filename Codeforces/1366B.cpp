@@ -15,6 +15,23 @@ using namespace std;
 #define se second
 
 int main(){
-    cout<<numeric_limits<int>::max();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,x,m,count=1,low,high;
+        cin>>n>>x>>m;
+        vpa ar(m);
+        low=x,high=x;
+        For(i,0,m) 
+        {
+            cin>>ar[i].fi>>ar[i].se;
+            if(ar[i].fi>high || ar[i].se<low) continue;
+            low=min(low,ar[i].fi);
+            high=max(high,ar[i].se);
+        }
+        count=high-low+1;
+        cout<<count<<endl;
+    }
     return 0;
 }

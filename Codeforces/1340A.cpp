@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define lli long long
-#define For(i,a,n) for(int i=(a);i<n;i++)
+#define For(i,n) for(int i=0;i<n;i++)
 #define vi vector<int>
 #define vil vector<long long>
 #define asc(x) x.begin(),x.end()
@@ -15,6 +15,21 @@ using namespace std;
 #define se second
 
 int main(){
-    cout<<numeric_limits<int>::max();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,res=0;
+        cin>>n;
+        vi ar(n);
+        For(i,n) 
+        {
+            cin>>ar[i];
+            if(i && ar[i]-ar[i-1]>1) res=-1;
+        }
+        if(res==-1) cout<<"NO";
+        else cout<<"YES";
+        cout<<endl;
+    }
     return 0;
 }

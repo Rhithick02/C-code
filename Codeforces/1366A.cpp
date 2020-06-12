@@ -14,7 +14,23 @@ using namespace std;
 #define fi first
 #define se second
 
+void swap(int &a, int &b)
+{
+    int temp=a;
+    if(a<b)a=b,b=temp;
+}
+
 int main(){
-    cout<<numeric_limits<int>::max();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int a,b;
+        cin>>a>>b;
+        if(a<b) swap(a,b);
+        if(b*2<=a) cout<<b;
+        else cout<<(a+b)/3;
+        cout<<endl;
+    }
     return 0;
 }
