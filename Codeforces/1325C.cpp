@@ -15,7 +15,23 @@ using namespace std;
 #define se second
 
 int main(){
-    string s="hida";
-    cout<<s.substr(0,3);    
+    int n,u,v,count=0;
+    cin>>n;
+    vpa ar[n+1];
+    vi ans(n-1,-1);
+    For(i,0,n-1)
+    {
+        cin>>u>>v;
+        ar[u].pb({v,i});
+        ar[v].pb({u,i});
+    }
+    For(i,1,n)
+    {
+        if(ar[i].size()<=2) continue;
+        for(auto it: ar[i]) if(count<3) ans[it.se]=count++;
+        break;
+    }
+    For(i,1,n) for(auto it: ar[i]) if(ans[it.se]==-1) ans[it.se]=count++;
+    For(i,0,n-1) cout<<ans[i]<<endl;
     return 0;
 }
