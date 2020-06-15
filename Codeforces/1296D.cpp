@@ -15,22 +15,22 @@ using namespace std;
 #define se second
 
 int main(){
-    int n;
-    cin>>n;
-    vi ar(n);
+    int n,a,b,k,count=0;
+    cin>>n>>a>>b>>k;
+    vi ar(n),st(n);
     For(i,0,n) cin>>ar[i];
-    for(int i=30;i>=0;i--){
-        int cnt=0, fl=-1;
-        For(j, 0, n){
-            if(ar[j] & (1<<i)) cnt++, fl=j;
-        }
-        if(cnt==1) 
-        {
-            swap(ar[fl], ar[0]);
-            break;
-        }
+    For(i,0,n) 
+    {
+        int te=(ar[i]/(a+b));
+        st[i]=ar[i]-(te*(a+b)==ar[i]?(te-1)*(a+b):te*(a+b));
     }
-    for(auto it: ar) cout<<it<<" ";
-    cout<<endl;
+    sort(asc(st));
+    For(i,0,n)
+    {
+        if(!st[i]) continue;
+        if(k>=(st[i]-1)/a) k-=(st[i]-1)/a,count++;
+        else break;
+    }
+    cout<<count<<endl;
     return 0;
 }

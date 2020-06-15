@@ -15,28 +15,23 @@ using namespace std;
 #define se second
 
 int main(){
-    int n,temp=1e6,flag=0;
+    int n,fl=0;
     cin>>n;
-    vi ar(n),te(n,-1);
-    For(i,0,n) cin>>ar[i];
-    For(i,2,n)
+    vi ar(n),ans(n);
+    vector<bool> check(n+1,false);
+    For(i,0,n) cin>>ar[i],check[ar[i]]=true;
+    For(i,0,n)
     {
-        if(ar[i]<=2 || ar[i]-ar[i-1]==1) continue;
-        int count=ar[i]-2;
-        for(int j=i-1;count>0 && j>flag;j--) ar[j]=count--;
-        flag=i;
-    }
-    te[0]=(ar[0]==0? temp--:0);
-    For(i,1,n)
-    {
-        if(ar[i]==ar[i-1]) 
+        if(i && ar[i]!=ar[i-1]) 
         {
-            te[i]=temp--;
+            ans[i]=ar[i-1];
             continue;
         }
-        else te[i]=ar[i]-1;
+        while(check[fl]) fl++;
+        ans[i]=fl;
+        check[fl]=true;
     }
-    for(auto it: te) cout<<it<<" ";
+    for(auto it: ans) cout<<it<<" ";
     cout<<endl;
     return 0;
 }
