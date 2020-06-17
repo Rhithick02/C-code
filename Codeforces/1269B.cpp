@@ -15,6 +15,25 @@ using namespace std;
 #define se second
 
 int main(){
-	cout<<(-1)%2<<endl;
-	return 0;
+    int n,m,x=1e9;
+    cin>>n>>m;
+    vi a(n),b(n);
+    For(i,0,n) cin>>a[i];
+    For(i,0,n) cin>>b[i];
+    sort(asc(a)),sort(asc(b));
+    For(i,0,n) 
+    {
+        int temp=(b[0]-a[i]+m)%m,fl=0;
+        For(j,0,n) 
+        {
+            if((a[(j+i)%n]-b[j]+temp)%m) 
+            {
+                fl=-1;
+                break;
+            }
+        }
+        if(!fl) x=min(x,temp);
+    }
+    cout<<x<<endl;
+    return 0;
 }
