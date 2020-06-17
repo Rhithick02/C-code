@@ -15,7 +15,24 @@ using namespace std;
 #define se second
 
 int main(){
-	For(i,0,-1)
-	cout<<"hi ";
-	return 0;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,even=0,odd=0;
+        cin>>n;
+        vi ar(n);
+        For(i,0,n) 
+        {
+            cin>>ar[i];
+            if(i%2!=ar[i]%2)
+            {
+                if(ar[i]&1) odd++;
+                else even++;
+            }
+        }
+        if(even!=odd) cout<<-1<<endl;
+        else cout<<even<<endl;
+    }
+    return 0;
 }

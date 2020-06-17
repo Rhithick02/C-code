@@ -15,7 +15,18 @@ using namespace std;
 #define se second
 
 int main(){
-	For(i,0,-1)
-	cout<<"hi ";
-	return 0;
+    float c;
+    while(cin>>c)
+    {
+        if(c==0.00) break;
+        int cards=1;
+        float sum=0;
+        while(sum<=c)
+        {
+            cards++;
+            sum+=1.0/cards;
+        }
+        cout<<cards-1<<" card(s)"<<endl;
+    }
+    return 0;
 }

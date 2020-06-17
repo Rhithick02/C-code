@@ -14,8 +14,15 @@ using namespace std;
 #define fi first
 #define se second
 
-int main(){
-	For(i,0,-1)
-	cout<<"hi ";
-	return 0;
+int main(){ 
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        for(int i=0;i<s.length();i+=2) cout<<s[i];
+        cout<<s[s.length()-1]<<endl;
+    }
+    return 0;
 }

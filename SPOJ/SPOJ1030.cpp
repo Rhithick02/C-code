@@ -15,7 +15,13 @@ using namespace std;
 #define se second
 
 int main(){
-	For(i,0,-1)
-	cout<<"hi ";
-	return 0;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        lli n;
+        cin>>n;
+        cout<<192+(n-1)*250<<endl;
+    }
+    return 0;
 }
