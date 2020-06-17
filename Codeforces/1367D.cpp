@@ -34,9 +34,10 @@ int main(){
         {
             if(ar[i].fi) break;
             st.pb(ar[i]);
-            ans[ar[i].se]='a'+fl;
-            alp[fl]--,ar[i].fi=-1;
         }
+        while(alp[fl]<st.size()) fl--;
+        For(i,0,st.size()) ans[ar[i].se]='a'+fl,alp[fl]--,ar[i].fi=-1;
+        if(st.size()==m) goto a;
         while(!alp[--fl]);
         while(mark)
         {
@@ -54,7 +55,7 @@ int main(){
             for(auto it: store) ans[it.se]='a'+fl,st.pb(it);
             if(store.size()) fl--;
         }
-        For(i,0,m) cout<<ans[i];
+        a:For(i,0,m) cout<<ans[i];
         cout<<endl;
     }
     return 0;
