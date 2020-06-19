@@ -31,12 +31,8 @@ int main(){
             if(ar[i]==ar[i+1]) st[r-1]++;
             else st.pb(1);
         }
-        for(;i<r;i++)
-        {
-            if(sum+st[i]>n/2) break;
-            sum+=st[i];
-        }
-        i--;
+        while(sum+st[i]<=n/2) sum+=st[i++];
+        sum-=st[i--];
         if(i<2 || n<6) 
         {
             cout<<0<<" "<<0<<" "<<0<<endl;

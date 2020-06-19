@@ -1,20 +1,24 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+ 
 using namespace std;
-#define lli long long
-#define For(i,a,n) for(int i=(a);i<n;i++)
-#define vi vector<int>
-#define vil vector<long long>
-#define asc(x) x.begin(),x.end()
-#define des(x) x.rbegin(),x.rend()
-#define pb push_back
-#define pa pair<int,int>
-#define pal pair<long long,long long>
-#define vpa vector<pair<int,int>>
-#define vpal vector<pair<long long,long long>>
-#define fi first
-#define se second
-
-int main(){
-	cout<<(-1)%2<<endl;
-	return 0;
+ 
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  cin >> n;
+  int k = n + 2;
+  vector<pair<int, int>> ret;
+  for (int i = 0; i < k; i++) {
+    for (int j = i - 1; j <= i + 1; j++) {
+      if (j >= 0 && j < k) {
+        ret.emplace_back(i, j);
+      }
+    }
+  }
+  cout << ret.size() << '\n';
+  for (auto& p : ret) {
+    cout << p.first << " " << p.second << '\n';
+  }
+  return 0;
 }
