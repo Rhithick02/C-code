@@ -14,7 +14,25 @@ using namespace std;
 #define fi first
 #define se second
 
+void divisors(lli k,vil &ar)
+{
+    int lim=sqrt(k);
+    For(i,2,lim+1){
+        if(k%i!=0)  continue;
+        ar.pb(i);
+        while(k%i==0) k/=i;
+    }
+    if(k>=2) ar.pb(k);
+}
+
 int main(){
-  cout<<(1<<3)<<endl;
-  return 0;
+    ios::sync_with_stdio(false);
+    lli n;
+    cin>>n;
+    vil ar;
+    divisors(n,ar);
+    if(ar.size()==1) cout<<ar[0];
+    else cout<<1;
+    cout<<endl;
+    return 0;
 }

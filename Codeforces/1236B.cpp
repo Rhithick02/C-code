@@ -13,8 +13,23 @@ using namespace std;
 #define vpal vector<pair<long long,long long>>
 #define fi first
 #define se second
+#define mod 1000000007
 
 int main(){
-  cout<<(1<<3)<<endl;
-  return 0;
+    ios::sync_with_stdio(false);
+    lli n,m,prod[2]={1,1},res=2;
+    cin>>n>>m;
+    while(m>0){
+        if(m&1) prod[0]=((prod[0]%mod)*(res%mod))%mod;
+        m=m>>1;
+        res=((res%mod)*(res%mod))%mod;
+    }
+    res=prod[0]-1;
+    while(n>0){
+        if(n&1) prod[1]=((prod[1]%mod)*(res%mod))%mod;
+        n=n>>1;
+        res=((res%mod)*(res%mod))%mod;
+    }
+    cout<<prod[1]%mod<<endl;
+    return 0;
 }
