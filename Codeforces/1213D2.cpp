@@ -15,5 +15,22 @@ using namespace std;
 #define se second
 
 int main(){
-  ios::sync_with_stdio(false);
-  }
+    ios::sync_with_stdio(false);
+    int n,k,x,mini=1e9;
+    cin>>n>>k;
+    vi ar[200001];
+    For(i,0,n){
+        int count=0;
+        cin>>x;
+        while(x) ar[x].pb(count),x/=2,count++;
+    }
+    For(i,1,200001){
+        if(ar[i].size()<k) continue;
+        sort(asc(ar[i]));
+        int sum=0;
+        For(j,0,k) sum+=ar[i][j];
+        mini=min(mini,sum);
+    }
+    cout<<mini<<endl;
+    return 0;
+}
