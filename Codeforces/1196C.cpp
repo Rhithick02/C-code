@@ -13,33 +13,24 @@ using namespace std;
 #define vpal vector<pair<long long,long long>>
 #define fi first
 #define se second
+#define et 100000
 
 int main(){
     ios::sync_with_stdio(false);
     int t;
     cin>>t;
     while(t--){
-        lli sum=0,temp=0,maxi=0;
-        int n;
+        int n,x,y,f[4],X[2]={-et,et},Y[2]={-et,et};
         cin>>n;
-        vi ar(n);
         For(i,0,n){
-            cin>>ar[i];
-            if(!(i&1)) sum+=ar[i];
+            cin>>x>>y>>f[0]>>f[1]>>f[2]>>f[3];
+            if(!f[0]) X[0]=max(X[0],x);
+            if(!f[1]) Y[1]=min(Y[1],y);
+            if(!f[2]) X[1]=min(X[1],x);
+            if(!f[3]) Y[0]=max(Y[0],y);
         }
-        for(int i=1;i<n;i+=2){
-            temp+=ar[i]-ar[i-1];
-            maxi=max(maxi,temp+ar[i-1]-ar[i]);
-            if(temp<0) temp=0;
-        }
-        maxi=max(maxi,temp),temp=0;
-        for(int i=1;i<n-1;i+=2){
-            temp+=ar[i]-ar[i+1];
-            maxi=max(maxi,temp+ar[i+1]-ar[i]);
-            if(temp<0) temp=0;
-        }
-        maxi=max(maxi,temp);
-        cout<<sum+maxi<<endl;
+        if(X[0]<=X[1] && Y[0]<=Y[1]) cout<<"1 "<<X[0]<<" "<<Y[0]<<endl;
+        else cout<<0<<endl;
     }
     return 0;
 }
