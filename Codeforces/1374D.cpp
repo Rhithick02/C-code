@@ -15,9 +15,21 @@ using namespace std;
 #define se second
 
 int main(){
-  ios::sync_with_stdio(false);
-  double x=5.0000;
-  if((int)x==x) cout<<"Crct";
-  else cout<<"wrong";
-  return 0;
+    ios::sync_with_stdio(false);
+    int t;
+    cin>>t;
+    while(t--){
+        lli maxi=0;
+        int n,k,x;
+        cin>>n>>k;
+        map<lli,lli> mp;
+        For(i,0,n){
+            cin>>x;
+            if(x%k) mp[k-x%k]++;
+        }
+        for(auto it:mp) maxi=max(maxi,it.fi+(it.se-1)*k);
+        if(maxi) maxi++;
+        cout<<maxi<<endl;
+    }
+    return 0;
 }

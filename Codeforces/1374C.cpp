@@ -15,9 +15,20 @@ using namespace std;
 #define se second
 
 int main(){
-  ios::sync_with_stdio(false);
-  double x=5.0000;
-  if((int)x==x) cout<<"Crct";
-  else cout<<"wrong";
-  return 0;
+    ios::sync_with_stdio(false);
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        string s;
+        cin>>n>>s;
+        vector<char> st;
+        For(i,0,n){
+            if(!st.size()) st.pb(s[i]);
+            else if(s[i]==')' && st.back()=='(') st.pop_back();
+            else st.pb(s[i]);
+        }
+        cout<<st.size()/2<<endl;
+    }
+    return 0;
 }

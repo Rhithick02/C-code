@@ -15,9 +15,22 @@ using namespace std;
 #define se second
 
 int main(){
-  ios::sync_with_stdio(false);
-  double x=5.0000;
-  if((int)x==x) cout<<"Crct";
-  else cout<<"wrong";
-  return 0;
+    ios::sync_with_stdio(false);
+    int t;
+    cin>>t;
+    while(t--){
+        int n,count=0,fl=0;
+        cin>>n;
+        while(n>1){
+            if(n%6==0) count++,n/=6;
+            else if((2*n)%6==0) count+=2,n/=3;
+            else{
+                fl=1;
+                break;
+            }
+        }
+        if(fl || n!=1) cout<<-1<<endl;
+        else cout<<count<<endl;
+    }
+    return 0;
 }
