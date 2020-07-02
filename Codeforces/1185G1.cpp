@@ -15,9 +15,15 @@ using namespace std;
 #define se second
 #define mod 1000000007
 
-lli answer(vi st,lli res){
-    if(st[0]==0 || st[1]==0 || st[2]==0) return res;
-    return (answer(st,res*st[0]--)%mod+answer(st,res*st[1]--)%mod+answer(st,res*st[2]--)%mod)%mod;
+lli answer(vi st,int genre, int left){
+    if(!left) return 1;
+    lli ans = 0;
+    For(i, 0, 3) if(i!=genre && st[i]) {
+        vi te = st;
+        te[i]--;
+        ans = (ans + st[i]*answer(te, i, left-1))%mod;
+    }
+    return ans;
 }
 
 int main(){
@@ -36,7 +42,7 @@ int main(){
             temp>>=1;
         }
         if(sum!=t) continue;
-        ans+=answer(st,1);
+        ans = (ans + answer(st, -1, st[0]+st[1]+st[2]))%mod;
     }
     cout<<ans<<endl;
     return 0;

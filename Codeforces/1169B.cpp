@@ -16,19 +16,21 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int t;
-    cin>>t;
-    while(t--){
-        int n,k,te;
-        cin>>n>>k;
-        te=k;
-        vector<vi> ar(n,vi(n,0));
-        for(int i=0;i<n && k>0;i++) for(int j=0;j<n && k>0;k--,j++) ar[(i+j)%n][j]=1;
-        cout<<(te%n? 2:0)<<endl;
-        For(i,0,n){
-            For(j,0,n) cout<<ar[i][j];
-            cout<<endl;
+    int n,m;
+    cin>>n>>m;
+    vi x;
+    vpa ar(m);
+    For(i,0,m) cin>>ar[i].fi>>ar[i].se;
+    x.pb(ar[0].fi);
+    x.pb(ar[0].se);
+    for(auto it: x){
+        int tot=0;
+        vi st(n+1);
+        for(auto te: ar) if(te.fi!=it && te.se!=it) st[te.fi]++,st[te.se]++,tot++;
+        if(tot==*max_element(asc(st))){
+            cout<<"YES"<<endl;
+            return 0;
         }
     }
-    return 0;
+    cout<<"NO"<<endl;
 }

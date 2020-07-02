@@ -16,19 +16,16 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int t;
-    cin>>t;
-    while(t--){
-        int n,k,te;
-        cin>>n>>k;
-        te=k;
-        vector<vi> ar(n,vi(n,0));
-        for(int i=0;i<n && k>0;i++) for(int j=0;j<n && k>0;k--,j++) ar[(i+j)%n][j]=1;
-        cout<<(te%n? 2:0)<<endl;
-        For(i,0,n){
-            For(j,0,n) cout<<ar[i][j];
-            cout<<endl;
-        }
+    int n;
+    string s;
+    cin>>n>>s;
+    string res(n,'0');
+    int cnt=0;
+    For(i,0,n){
+        if(s[i]==')') cnt--;
+        res[i]=(cnt&1)+'0';
+        if(s[i]=='(') cnt++;
     }
+    cout<<res<<endl;
     return 0;
 }

@@ -16,19 +16,22 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int t;
-    cin>>t;
-    while(t--){
-        int n,k,te;
-        cin>>n>>k;
-        te=k;
-        vector<vi> ar(n,vi(n,0));
-        for(int i=0;i<n && k>0;i++) for(int j=0;j<n && k>0;k--,j++) ar[(i+j)%n][j]=1;
-        cout<<(te%n? 2:0)<<endl;
-        For(i,0,n){
-            For(j,0,n) cout<<ar[i][j];
-            cout<<endl;
-        }
+    lli res=0;
+    int n,m;
+    cin>>n>>m;
+    vi boy(n),girl(m);
+    For(i,0,n) cin>>boy[i];
+    For(i,0,m) cin>>girl[i];
+    sort(des(boy)),sort(asc(girl));
+    if(boy[0]==girl[0]){
+        For(i,0,m) res+=girl[i];
+        res+=1LL*m*boy[1];
     }
+    else{
+        For(i,1,m) res+=girl[i];
+        res+=boy[0]+girl[0]+1LL*(m-1)*boy[1];
+    }
+    For(i,2,n) res+=1LL*m*boy[i];
+    cout<<(boy[0]>girl[0]? -1:res)<<endl;
     return 0;
 }
