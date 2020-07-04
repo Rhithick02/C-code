@@ -19,18 +19,16 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int n,pos=0,cnt,end=n-1;
+        int n,cnt=0,pos;
         cin>>n;
-        vector<bool> st(n+1);
         vi ar(n);
-        For(i,0,n){
-            cin>>ar[i];
-            if(ar[i]==1) pos=i;
+        For(i,0,n) cin>>ar[i];
+        for(int i=0,j=1;i<n;i+=2,j+=2) {
+            if(ar[i]>0) ar[i]=-ar[i];
+            if(ar[j]<0) ar[j]=-ar[j];
         }
-        cnt=ar[n-1];
-        For(i,pos,end) st[ar[i]]=true;
-        end=cnt-1;
-        while(st[cnt]) cnt--;
-        
+        for(auto it: ar) cout<<it<<" ";
+        cout<<"\n";
     }
+    return 0;
 }

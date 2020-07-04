@@ -14,23 +14,25 @@ using namespace std;
 #define fi first
 #define se second
 
+bool sortbyse(const pa &a,const pa &b){
+    return a.se<b.se;
+}
+
 int main(){
     ios::sync_with_stdio(false);
-    int t;
-    cin>>t;
-    while(t--){
-        int n,pos=0,cnt,end=n-1;
-        cin>>n;
-        vector<bool> st(n+1);
-        vi ar(n);
-        For(i,0,n){
-            cin>>ar[i];
-            if(ar[i]==1) pos=i;
-        }
-        cnt=ar[n-1];
-        For(i,pos,end) st[ar[i]]=true;
-        end=cnt-1;
-        while(st[cnt]) cnt--;
-        
+    lli sum=0;
+    int n,m,k,cnt=0;
+    cin>>n>>m>>k;
+    vpa ar(n),st;
+    For(i,0,n) cin>>ar[i].fi,ar[i].se=i+1;
+    sort(des(ar));
+    For(i,0,m*k) sum+=ar[i].fi,st.pb(ar[i]);
+    sort(asc(st),sortbyse);
+    cout<<sum<<"\n";
+    For(i,0,m*(k-1)){
+        cnt++;
+        if(cnt==m) cout<<st[i].se<<" ",cnt=0;
     }
+    cout<<"\n";
+    return 0;
 }

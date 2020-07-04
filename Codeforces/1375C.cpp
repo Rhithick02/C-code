@@ -19,18 +19,11 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int n,pos=0,cnt,end=n-1;
+        int n;
         cin>>n;
-        vector<bool> st(n+1);
         vi ar(n);
-        For(i,0,n){
-            cin>>ar[i];
-            if(ar[i]==1) pos=i;
-        }
-        cnt=ar[n-1];
-        For(i,pos,end) st[ar[i]]=true;
-        end=cnt-1;
-        while(st[cnt]) cnt--;
-        
+        For(i,0,n) cin>>ar[i];
+        cout<<(ar[0]<ar[n-1]? "YES":"NO")<<"\n";
     }
+    return 0;
 }
