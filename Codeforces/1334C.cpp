@@ -19,19 +19,17 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        lli mini=1e13,bullet=0;
+        lli mini=1e14,bullet=0;
         int n;
         cin>>n;
         vpal ar(n);
-        pal insig={1e13,-1};
-        For(i,0,n) cin>>ar[i].fi>>ar[i].se,mini=min(mini,ar[i].fi);
+        For(i,0,n) cin>>ar[i].fi>>ar[i].se,mini=min(mini,min(ar[i].fi,ar[i].se));
         For(i,0,n){
-            if(ar[i].se>=ar[(i+1)%n].fi) continue;
-            if(insig.fi>ar[(i+1)%n].fi-ar[i].se) insig={ar[(i+1)%n].fi-ar[i].se,(i+1)%n};
+            lli dif=ar[(i+1)%n].fi-ar[i].se;
+            bullet+=max(1LL*0,dif);
         }
-        bullet+=ar[insig.se].fi;
-        For(i,0,n) bullet+=max(1LL*0,ar[(i+insig.se+1)%n].fi-ar[(i+insig.se)%n].se);
-        cout<<bullet<<endl;
+        bullet+=mini;
+        cout<<bullet<<"\n";
     }
     return 0;
 }

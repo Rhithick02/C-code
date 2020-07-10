@@ -6,31 +6,22 @@ using namespace std;
 int main(){
     int t;
     cin>>t;
-    while(t--)
-    {
+    while(t--){
         lli sum=0;
         int n,x,flag=-1;
         cin>>n>>x;
         vi ar(n);
-        For(i,n) 
-        {
-            cin>>ar[i];
-            sum+=ar[i];
-        }
+        For(i,n) cin>>ar[i],sum+=ar[i];
         sort(ar.begin(),ar.end());
-        For(i,n) 
-        {
-            if(sum/(n-i)>=x)
-            {
+        For(i,n){
+            if(sum/(n-i)>=x){
                 flag=1;
                 cout<<n-i;
                 break;
             }
-            else 
-                sum-=ar[i];
+            else sum-=ar[i];
         }
-        if(flag!=1)
-            cout<<"0";
+        if(flag!=1) cout<<"0";
         cout<<endl;
     }
     return 0;
