@@ -19,24 +19,28 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int n,fl=0;
+        int n;
         cin>>n;
-        vi ar(n+1),st;
-        For(i,0,n){
-            cin>>ar[i];
-            if(ar[i]!=i+1) st.pb(i);
+        vi ar(n);
+        vpa st;
+        For(i,0,n) cin>>ar[i];
+        st.pb({0,ar[0]});
+        For(i,1,n){
+            if(st.size()==1){
+                if(ar[i]>st[0].se) st.pb({i,ar[i]});
+                else st[0]={i,ar[i]};
+            }
+            else if(st.size()==2){
+                if(ar[i]<st[1].se) st.pb({i,ar[i]});
+                else st[1]={i,ar[i]};
+            }
         }
-        if(!st.size()){
-            cout<<0<<"\n";
-            continue;
+        if(st.size()!=3) cout<<"NO\n";
+        else{
+            cout<<"YES\n";
+            for(auto it:st) cout<<it.fi+1<<" ";
+            cout<<"\n";
         }
-        For(i,1,st.size()){
-            if(st[i]-st[i-1]<=1) continue;
-            fl=1;
-            break;
-        }
-        if(!fl) cout<<1<<"\n";
-        else cout<<2<<"\n";
     }
     return 0;
 }
