@@ -17,17 +17,16 @@ using namespace std;
 int main(){
     int t;
     cin>>t;
-    while(t--)
-    {
+    while(t--){
         lli n,p,k;
         cin>>n>>p>>k;
         vi ar(n);
         For(i,n) cin>>ar[i];
         sort(asc(ar));
         vi dp(n+2);
-        For(i,n)
-            dp[i+2]=ar[i]+dp[i];
-        cout<<(upper_bound(asc(dp),p)-dp.begin())-2<<endl;
+        For(i,n) dp[i+2]=ar[i]+dp[i];
+        // cout<<(upper_bound(asc(dp),p)-dp.begin())-2<<endl;
+        for(auto it: dp) cout<<it<<" ";
     }
     return 0;
 }

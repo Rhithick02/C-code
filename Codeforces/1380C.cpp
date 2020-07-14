@@ -13,15 +13,24 @@ using namespace std;
 #define vpal vector<pair<long long,long long>>
 #define fi first
 #define se second
-#define mod 1000000007
 
 int main(){
     ios::sync_with_stdio(false);
-    int n,m;
-    cin>>n>>m;
-    vector<vil> ar(2*m,vil(n,1));
-    For(i,1,n) ar[0][i]=i+1;
-    For(i,1,2*m) For(j,1,n) ar[i][j]=(ar[i-1][j]%mod+ar[i][j-1]%mod)%mod;
-    cout<<ar[2*m-1][n-1]<<"\n";
+    int t;
+    cin>>t;
+    while(t--){
+        lli mini=1e10;
+        int n,x,cnt=0,teams=0;
+        cin>>n>>x;
+        vi ar(n);
+        For(i,0,n) cin>>ar[i];
+        sort(des(ar));
+        For(i,0,n){
+            mini=min(mini,1LL*ar[i]);
+            cnt++;
+            if(cnt*mini>=x) teams++,mini=1e18,cnt=0;
+        }
+        cout<<teams<<"\n";
+    }
     return 0;
 }
