@@ -19,16 +19,15 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int h,n,temp,cnt=0;
+        int h,n,cnt=0;
         cin>>h>>n;
-        vi ar(n);
+        vi ar(n+1);
         For(i,0,n) cin>>ar[i];
-        temp = ar[1];
         For(i,0,n-1){
-            if(ar[i]-temp==1) cnt++;
-            temp = ar[i+1]+1;
+            if(ar[i]-ar[i+1]!=1) ar[i]=ar[i+1]+1,i--;
+            else if(ar[i]-ar[i+2]==2) i++;
+            else cnt++;
         }
-        if(ar[n-1]-temp==1) cnt++;
         cout<<cnt<<"\n";
     }
     return 0;
