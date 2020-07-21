@@ -16,8 +16,24 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string te="abcd";
-    reverse(asc(te));
-    cout<<te<<"\n";
+    int t;
+    cin>>t;
+    while(t--){
+        int fl=0;
+        lli l,r,m;
+        cin>>l>>r>>m;
+        For(i,l,r+1){
+            lli temp=i-m%i;
+            if(l+temp>r){
+                temp=-m%i;
+                if(temp+r<l) continue;
+                cout<<i<<" "<<r<<" "<<r+temp<<"\n";
+                fl=1;
+                break;
+            }
+            if(!fl) cout<<i<<" "<<l<<" "<<l+temp<<"\n";
+            break;
+        }
+    }
     return 0;
 }

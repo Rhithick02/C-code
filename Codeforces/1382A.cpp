@@ -16,8 +16,20 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string te="abcd";
-    reverse(asc(te));
-    cout<<te<<"\n";
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m,res=0;
+        cin>>n>>m;
+        vi a(n),b(m);
+        For(i,0,n) cin>>a[i];
+        For(i,0,m) cin>>b[i];
+        For(i,0,n){
+            For(j,0,m) if(a[i]==b[j]) res=a[i];
+            if(res) break;
+        }
+        if(!res) cout<<"NO\n";
+        else cout<<"YES\n1 "<<res<<"\n";
+    }
     return 0;
 }

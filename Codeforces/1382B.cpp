@@ -16,8 +16,20 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string te="abcd";
-    reverse(asc(te));
-    cout<<te<<"\n";
+    int t;
+    cin>>t;
+    while(t--){
+        int n,fl=-1;
+        cin>>n;
+        vi ar(n);
+        For(i,0,n) cin>>ar[i];
+        For(i,0,n){
+            if(ar[i]==1) continue;
+            fl=i+1;
+            break;
+        }
+        if(fl==-1) cout<<(n&1? "First":"Second")<<"\n";
+        else cout<<(fl&1? "First":"Second")<<"\n";
+    }
     return 0;
 }
