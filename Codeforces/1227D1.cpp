@@ -14,13 +14,24 @@ using namespace std;
 #define fi first
 #define se second
 
+bool sortbysec(const pa &a,const pa &b){
+    return a.se<b.se;
+}
+
 int main(){
     ios::sync_with_stdio(false);
-    vpa st(5);
-    For(i,0,5) cin>>st[i].fi,st[i].se=-i;
-    sort(des(st));
-    for(auto it:st) cout<<it.fi<<" ";
-    cout<<"\n";
-    for(auto it:st) cout<<it.se<<" ";
+    int n,m,k,pos;
+    cin>>n;
+    vpa ar(n);
+    For(i,0,n) cin>>ar[i].fi,ar[i].se=-i;
+    sort(des(ar));
+    cin>>m;
+    For(i,0,m){
+        cin>>k>>pos;
+        vpa ans;
+        For(j,0,k) ans.pb({ar[j].fi,-ar[j].se});
+        sort(asc(ans),sortbysec);
+        cout<<ans[pos-1].fi<<"\n";
+    }
     return 0;
 }

@@ -16,11 +16,13 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    vpa st(5);
-    For(i,0,5) cin>>st[i].fi,st[i].se=-i;
-    sort(des(st));
-    for(auto it:st) cout<<it.fi<<" ";
-    cout<<"\n";
-    for(auto it:st) cout<<it.se<<" ";
-    return 0;
+    int n,m,k,pos;
+    cin>>n;
+    vi ar(n);
+    For(i,0,n) cin>>ar[i].fi,ar[i].se=-i;
+    sort(des(ar));
+    cin>>m;
+    For(i,0,m){
+        cin>>k>>pos;
+    }
 }
