@@ -22,8 +22,8 @@ lli bsearch(lli a,lli h,lli x,lli maxi){
         if(maxi+mid*(a-h)>=x) high=mid-1;
         else low=mid+1;
     }
-    if(maxi+mid*(a-h)<x) mid++;
-    if(maxi+(mid-1)*(a-h)>=x) mid--;
+    while((maxi+mid*(a-h)<x)) mid++;
+    while((maxi+(mid-1)*(a-h)>=x)) mid--;
     return mid+1;
 }
 
