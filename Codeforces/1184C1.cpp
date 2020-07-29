@@ -16,18 +16,11 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int t;
-    cin>>t;
-    while(t--){
-        string s;
-        cin>>s;
-        vi r1(10),r2(10);
-        for(int i=0;i<s.length();i+=2) r1[s[i]-'0']++;
-        for(int i=1;i<s.length();i+=2) r2[s[i]-'0']++;
-        sort(des(r1)),sort(des(r2));
-        int res=abs(r2[0]-r1[0]);
-        For(i,1,10) res+=r1[i]+r2[i];
-        cout<<res<<"\n";
+    int n,x,y;
+    cin>>n;
+    vector<vi> ar(51,vi(51,0));
+    For(i,0,4*n+1){
+        cin>>x>>y;
+        ar[x][y]=1;
     }
-    return 0;
 }

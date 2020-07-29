@@ -13,21 +13,34 @@ using namespace std;
 #define vpal vector<pair<long long,long long>>
 #define fi first
 #define se second
+#define n s.length()
+
+string s;
+int check(int num,int &ind){
+    int cnt=0;
+    for(;ind<n;ind++){
+        if(s[ind]!='0'+num) cnt++;
+        else break;
+    }
+    ind++;
+    return cnt;
+}
 
 int main(){
     ios::sync_with_stdio(false);
     int t;
     cin>>t;
     while(t--){
-        string s;
+        int cnt=1e7;
         cin>>s;
-        vi r1(10),r2(10);
-        for(int i=0;i<s.length();i+=2) r1[s[i]-'0']++;
-        for(int i=1;i<s.length();i+=2) r2[s[i]-'0']++;
-        sort(des(r1)),sort(des(r2));
-        int res=abs(r2[0]-r1[0]);
-        For(i,1,10) res+=r1[i]+r2[i];
-        cout<<res<<"\n";
+        For(i,0,10){
+            For(k,0,10){
+                int te=0,pos=0;
+                while(pos<n) te+=check(i,pos)+check(k,pos);
+                if((n-te)%2==0 || k==i) cnt=min(cnt,te);
+            }
+        }
+        cout<<cnt<<"\n";
     }
     return 0;
 }
