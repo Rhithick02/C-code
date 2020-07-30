@@ -16,11 +16,25 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n,x,y;
+    int n;
     cin>>n;
-    vector<vi> ar(51,vi(51,0));
-    For(i,0,4*n+1){
-        cin>>x>>y;
-        ar[x][y]=1;
+    vpa ar(4*n+1);
+    For(i,0,4*n+1) cin>>ar[i].fi>>ar[i].se;
+    For(i,0,51){
+        For(j,0,51){
+            For(k,0,51){
+                int cnt=0;
+                pa te;
+                For(l,0,4*n+1){
+                    if(!(ar[l].fi==i+k||ar[l].fi==i||ar[l].se==j||ar[l].se==j+k)||ar[l].fi>i+k||ar[l].se>j+k||ar[l].fi<i||ar[l].se<j)
+                        cnt++,te=ar[l];
+                }
+                if(cnt==1){
+                    // cout<<i<<" "<<j<<" "<<k;
+                    cout<<te.fi<<" "<<te.se<<"\n";
+                    return 0;
+                }
+            }
+        }
     }
 }
