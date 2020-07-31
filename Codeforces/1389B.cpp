@@ -13,27 +13,33 @@ using namespace std;
 #define vpal vector<pair<long long,long long>>
 #define fi first
 #define se second
+#define MAX 300001
+int n,k,z,x,sum,res=0;
+vi pref(MAX),ar(MAX),st;
+void tot(){
+    for(int i=k;i>=1;i--){
+        int te[2]={ar[i],ar[i-1]};
+        sum=pref[i],x=k-i;
+        if(x>=2*z) sum+=z*(te[1]+te[0]),x-=2*z;
+        else sum+=(x/2)*(te[0]+te[1])+x%2*(te[1]),x=0;
+        if(x) sum+=pref[i+x]-pref[i];
+        res=max(res,sum);
+    }
+}
 
 int main(){
     ios::sync_with_stdio(false);
     int t;
     cin>>t;
     while(t--){
-        int n,k,ans=2e9,res;
-        cin>>n>>k;
-        vi ar(n);
-        For(i,0,n) cin>>ar[i];
-        if(n==1) cout<<ar[0]<<"\n";
-        else{
-            sort(asc(ar));
-            For(i,0,n-k){
-                if(ans>ar[i+k]-(ar[i]+ar[i+k])/2){
-                    ans=ar[i+k]-(ar[i]+ar[i+k])/2;
-                    res=(ar[i]+ar[i+k])/2;
-                }
-            }
-            cout<<res<<"\n";
+        st.clear(),res=0;
+        cin>>n>>k>>z;
+        For(i,0,n){
+            cin>>ar[i];
+            pref[i]=ar[i]+(!i?0:pref[i-1]);
         }
+        tot();
+        cout<<res<<"\n";
     }
     return 0;
 }

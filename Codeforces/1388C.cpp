@@ -14,23 +14,31 @@ using namespace std;
 #define fi first
 #define se second
 #define MAX 200001
-int n,m,u,v;
+#define ul (ppl[start]+hpy[start])
+
+lli n,m,u,v,fl;
 vector<bool> visited(MAX);
-vi ppl(MAX),hpy(MAX),road[MAX];
-int dfs(int start){
+vil ppl(MAX),hpy(MAX),road[MAX];
+lli dfs(int start){
+    lli h=0;
     visited[start]=true;
     for(auto it: road[start]){
         if(visited[it]) continue;
         ppl[start]+=dfs(it);
+        h+=ppl[it]+hpy[it]>>1;
     }
+    if(ul%2 || ul<0 || ppl[start]-hpy[start]<0 || ul/2<h) fl=0;
     return ppl[start];
 }
+
 int main(){
     ios::sync_with_stdio(false);
     int t;
     cin>>t;
     while(t--){
+        fl=1;
         cin>>n>>m;
+        visited.assign(MAX,false);
         For(i,1,n+1) road[i].clear();
         For(i,1,n+1) cin>>ppl[i];
         For(i,1,n+1) cin>>hpy[i];
@@ -39,7 +47,9 @@ int main(){
             road[u].pb(v);
             road[v].pb(u);
         }
-        dfs(1);        
+        dfs(1);
+        if(fl) cout<<"YES\n";
+        else cout<<"NO\n";
     }
     return 0;
 }
