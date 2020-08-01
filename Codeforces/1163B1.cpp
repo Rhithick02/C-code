@@ -20,10 +20,6 @@ int main(){
     cin>>n;
     vi ar(n),st(11);
     For(i,0,n) cin>>ar[i],st[ar[i]]++;
-    if(n<=3){
-        cout<<n<<endl;
-        exit(0);
-    }
     int res=n;
     For(i,0,n){
         int prev=0,fl=0;

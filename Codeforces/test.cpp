@@ -13,34 +13,71 @@ using namespace std;
 #define vpal vector<pair<long long,long long>>
 #define fi first
 #define se second
-#define MAX 4294967295
-#define n te.size()
-
+#define MAX 11
+set<int> te;
+vi ar(MAX),st(MAX),ovrl(MAX);
+bool check(){
+    if(te.size()==1 && (*te.begin()==1 || ovrl[*te.begin()]==1)) return true;
+    if(te.size()==2){
+        int x=0,y=0;
+        for(auto it: te){
+            if(!x) x=it;
+            else y=it;
+        }
+        if((x==1 && ovrl[x]==1) || (y-x==1 && ovrl[y]==1)) return true;
+    }
+    return false;
+}
 int main(){
     ios::sync_with_stdio(false);
-    lli cnt=0,times;
-    vil te;
-    int l,fl=1;
-    string s;
-    cin>>l;
-    For(i,0,l){
-        cin>>s;
-        if(s=="for"){
-            cin>>times;
-            if(!fl){
-                te.pb(0);
-                continue;
+    int t;
+    cin>>t;
+    while(t--){
+        te.clear();
+        For(i,0,MAX) st[i]=ovrl[i]=0;
+        int n;
+        n=rand()%10+1;
+        vi St(MAX);
+        For(i,0,n) ar[i]=rand()%10+1;
+        For(i,0,n) St[ar[i]]++,st[ar[i]]++;
+        int res1=n,res2;
+        For(i,0,n){
+            int prev=0,fl=0;
+            For(j,1,11){
+                if(!St[j]) continue;
+                prev=0,fl=0;
+                St[j]--;
+                For(k,1,11){
+                    if(!St[k]) continue;
+                    if(!prev) prev=St[k];
+                    else if(St[k]!=prev){
+                        fl=1;
+                        break;
+                    }
+                }
+                if(!fl) break;
+                St[j]++;
             }
-            if(!n) te.pb(times);
-            else{
-                lli med=times*te[n-1];
-                te.pb(med);
-                if(med>MAX) fl=0;
-            }
+            if(!fl) break;
+            St[ar[n-1-i]]--;
+            res1--;
         }
-        else if(s=="add") cnt+=(n>0?te[n-1]:1);
-        else te.pop_back();
+        For(i,1,MAX) if(st[i]) ovrl[st[i]]++,te.insert(st[i]);
+        for(int i=n-1;i>=0;i--){
+            if(check()){
+                res2=i+1;
+                break;
+            }
+            ovrl[st[ar[i]]]--;
+            if(!ovrl[st[ar[i]]]) te.erase(st[ar[i]]);
+            te.insert(--st[ar[i]]);
+            ovrl[st[ar[i]]]++;
+        }
+        if(res1!=res2){
+            cout<<n<<" "<<res1<<" "<<res2<<"\n";
+            For(i,0,n) cout<<ar[i]<<" ";
+            break;
+        }
     }
-    if(cnt>MAX) cout<<"OVERFLOW!!!\n";
-    else cout<<cnt<<"\n";
+    return 0;
 }
