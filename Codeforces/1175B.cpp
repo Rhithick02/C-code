@@ -19,26 +19,17 @@ using namespace std;
 int main(){
     ios::sync_with_stdio(false);
     lli cnt=0,times;
-    vil te;
-    int l,fl=1;
+    vil te(1,1);
+    int l;
     string s;
     cin>>l;
     For(i,0,l){
         cin>>s;
         if(s=="for"){
             cin>>times;
-            if(!fl){
-                te.pb(0);
-                continue;
-            }
-            if(!n) te.pb(times);
-            else{
-                lli med=times*te[n-1];
-                te.pb(med);
-                if(med>MAX) fl=0;
-            }
+            te.pb(min(1LL*(MAX+1),te[n-1]*times));
         }
-        else if(s=="add") cnt+=(n>0?te[n-1]:1);
+        else if(s=="add") cnt+=(n>1?te[n-1]:1);
         else te.pop_back();
     }
     if(cnt>MAX) cout<<"OVERFLOW!!!\n";
