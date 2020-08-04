@@ -16,11 +16,14 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string s,prev="";
-    For(i,0,100000) s+='1';
-    For(i,0,100000){
-        string re=prev+s[i];
-        prev=prev+s[i];
+    int t;
+    cin>>t;
+    while(t--){
+        int a,b,fl=0;
+        string te;
+        cin>>a>>te;
+        For(i,0,te.size()) if(te[i]!='9') fl=1;
+        b=te.size()-(fl?1:0);
+        cout<<1LL*a*b<<"\n";
     }
-    cout<<prev<<endl;
 }

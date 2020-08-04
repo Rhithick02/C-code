@@ -16,11 +16,19 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string s,prev="";
-    For(i,0,100000) s+='1';
-    For(i,0,100000){
-        string re=prev+s[i];
-        prev=prev+s[i];
+    lli n,m,ta,tb,k,sum[2]={0},res=0;
+    cin>>n>>m>>ta>>tb>>k;
+    vil a(n),b(m),st(k+1);
+    For(i,0,n) cin>>a[i];
+    For(i,0,m) cin>>b[i];
+    if(k>=min(n,m) || a[k]+ta>b[m-1] || b[m-k-1]<a[0]+ta){
+        cout<<"-1\n";
+        exit(0);
     }
-    cout<<prev<<endl;
+    For(i,0,k+1){
+        int pos=lower_bound(asc(b),a[i]+ta)-b.begin();
+        st[i]=m-pos-(k-i);
+    }
+    sort(asc(st));
+    cout<<b[m-st[0]]+tb<<"\n";
 }
