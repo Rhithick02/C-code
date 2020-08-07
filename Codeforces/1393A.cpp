@@ -16,12 +16,11 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    multiset<int> te;
-    te.insert(10);
-    te.insert(10);
-    te.insert(10);
-    te.insert(40);
-    auto it=te.find(10);
-    te.erase(it);
-    for(auto it: te) cout<<it<<" ";
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        cout<<(n-1)/2+(n&1?1:2)<<"\n";
+    }
 }
