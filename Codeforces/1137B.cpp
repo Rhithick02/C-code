@@ -25,12 +25,14 @@ int main(){
         scnt[(s[i]=='0'?0:1)]++;
         if(i<n(t)) tcnt[(t[i]=='0'?0:1)]++;
     }
+    // KMP String processing
     For(i,1,n(t)){
         pos=pref[i-1];
         while(pos>0 && t[i]!=t[pos]) pos=pref[pos-1];
         if(t[i]==t[pos]) pos++;
         pref[i]=pos;
     }
+    // 
     pos=pref[n(t)-1];
     if(scnt[0]<tcnt[0] || scnt[1]<tcnt[1]){
         cout<<s<<"\n";

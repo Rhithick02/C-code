@@ -29,13 +29,12 @@ int main(){
             int cnt=0;
             vi temp=te;
             For(i,0,n){
-                if(temp[ar[i]]<=0 || temp[it-ar[i]]<=0 || it-ar[i]<=0 || it-ar[i]>=n) continue;
+                if(temp[ar[i]]<=0 || it-ar[i]<=0 || it-ar[i]>n || temp[it-ar[i]]<=0) continue;
                 if(ar[i]==it-ar[i]){
                     if(temp[ar[i]]>1) cnt++,temp[ar[i]]-=2;
                 }
                 else if(temp[ar[i]]>0 && temp[it-ar[i]]>0)
                     cnt++,temp[it-ar[i]]--,temp[ar[i]]--;
-                if(cnt==3) cout<<it<<" ";
             }
             res=max(res,cnt);
         }
