@@ -14,26 +14,45 @@ using namespace std;
 #define fi first
 #define se second
 #define MAX 5001
-void dfs(int start,vector<bool> &visited,vi ar[]){
+int cnt,n,m,s,u,v,ans;
+vi ar[MAX];
+vector<bool> visited(MAX),temp(MAX);
+vpa st;
+void dfs(int start){
     visited[start]=true;
     for(auto it: ar[start]){
         if(visited[it]) continue;
         dfs(it);
     }
 }
+void dfs2(int start){
+    temp[start]=true;
+    cnt++;
+    for(auto it: ar[start]){
+        if(temp[it] || visited[it]) continue;
+        dfs2(it);
+    }
+}
 int main(){
     ios::sync_with_stdio(false);
-    int n,m,s,u,v,ans=0;
     cin>>n>>m>>s;
-    vi ar[n+1];
-    vector<bool> visited(n+1);
     For(i,0,m){
         cin>>u>>v;
         ar[u].pb(v);
     }
+    dfs(s);
     For(i,1,n+1){
         if(visited[i]) continue;
-        ans++;
-        dfs(s,visited,ar);
+        For(i,1,MAX) temp[i]=false;
+        cnt=0;
+        dfs2(i);
+        st.pb({cnt,i});
     }
+    sort(des(st));
+    for(auto it: st){
+        if(visited[it.se]) continue;
+        ans++;
+        dfs(it.se);
+    }
+    cout<<ans<<"\n";
 }
