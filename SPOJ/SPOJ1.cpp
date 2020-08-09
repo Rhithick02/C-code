@@ -18,31 +18,27 @@ using namespace std;
 int main(){
     int t;
     cin>>t;
-    while(t--)
-    {
+    while(t--){
         int n,m;
         cin>>m>>n;
         vector<bool> ar(n-m+1);
-        for(int i=2;i<=sqrt(n);i++)
-        {
+        for(int i=2;i<=sqrt(n);i++){
             int te=m+i-m%i;
-            for(int j=(te==i? te+i: te);j<=n;j+=i)
-            {
+            for(int j=(te==i? te+i: te);j<=n;j+=i){
                 if(ar[j-m]) continue;
                 ar[j-m]=true;
             }
         }
         int flag=0;
-        for(int i=2;i<=sqrt(m);i++)
-            if(m%i==0) 
-            {
+        for(int i=2;i<=sqrt(m);i++){
+            if(m%i==0){
                 flag=-1;
                 break;
             }
+        }
         if(!flag && m!=1) cout<<m<<endl;
-        For(i,n-m)
-            if(!ar[i+1]) cout<<i+m+1<<endl;
-        cout<<endl;
+        For(i,n-m) if(!ar[i+1]) cout<<i+m+1<<endl;
+        cout<<"\n";
     }
     return 0;
 }

@@ -14,23 +14,34 @@ using namespace std;
 #define fi first
 #define se second
 #define MAX 200001
-int n,m,cnt=0;
-map<int,int> mp;
-set<int> st;
+lli n,m,cnt=0,te;
+map<lli,lli> mp;
+set<lli> st;
 vi ar(MAX);
-void transfer(){
-    for(auto it: mp){
-        if(it.se<=n/m) continue;
-        int temp=it.se-n/m;
-        cnt+=temp;
-        mp[(it.fi+1)%m]+=temp;
-        mp[it.fi]-=temp;
-    }
-}
 int main(){
     ios::sync_with_stdio(false);
     cin>>n>>m;
-    For(i,0,n) cin>>ar[i],mp[ar[i]%m]++;
-    For(i,0,2) transfer();
+    For(i,0,n){
+        cin>>ar[i];
+        mp[ar[i]%m]++;
+    }
+    For(i,0,m){
+        if(mp[i]<n/m)
+            st.insert(i);
+    }
+    for(int i=0;i<n && st.size();i++){
+        if(mp[ar[i]%m]<=n/m) continue;
+        auto it=st.lower_bound(ar[i]%m);
+        if(it!=st.end()) 
+            te=*it-ar[i]%m;
+        else 
+            te=*st.begin()+m-ar[i]%m;
+        mp[ar[i]%m]--;
+        mp[(ar[i]+te)%m]++;
+        ar[i]+=te,cnt+=te;
+        if(mp[ar[i]%m]==n/m) 
+            st.erase((it!=st.end()?it:st.begin()));
+    }
     cout<<cnt<<"\n";
+    For(i,0,n) cout<<ar[i]<<" ";
 }

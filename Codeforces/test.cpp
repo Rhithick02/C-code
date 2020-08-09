@@ -16,12 +16,14 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    multiset<int> te;
-    te.insert(10);
-    te.insert(10);
-    te.insert(10);
-    te.insert(40);
-    auto it=te.find(10);
-    te.erase(it);
-    for(auto it: te) cout<<it<<" ";
+    map<int,int> mp;
+    mp[5]++;
+    cout<<mp[0];
+    // set<int> te;
+    // te.insert(10);
+    // te.insert(10);
+    // te.insert(10);
+    // te.insert(40);
+    // auto it=te.lower_bound(41);
+    // if(it==te.end()) cout<<"true";
 }
