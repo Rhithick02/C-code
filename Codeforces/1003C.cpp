@@ -16,23 +16,18 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n,m;
-    bool ok = false;
-    cin>>n>>m;
-    vi a(n),b(m);
-    For(i,0,n) cin>>a[i];
-    For(i,0,m) cin>>b[i];
-    For(i,0,512){
-        For(j,0,n){
-            ok = false;
-            For(k,0,m){
-                if(((a[j]&b[k])|i) == i) ok = true;
-            }
-            if(!ok) break;
-        }
-        if(ok){
-            cout<<i<<"\n";
-            break;
+    int n,k;
+    double temp=0;
+    cin>>n>>k;
+    vi ar(n),pref(n+1);
+    For(i,0,n) cin>>ar[i];
+    pref[1]=ar[0];
+    For(i,2,n+1) pref[i]=pref[i-1]+ar[i-1];
+    For(i,k,n+1){
+        For(j,0,n-i+1){
+            double buf = (1.0*(pref[j+i]-pref[j]))/i;
+            temp = max(temp,buf);
         }
     }
+    cout<<setprecision(10)<<temp<<"\n";
 }

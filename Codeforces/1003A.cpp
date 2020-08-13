@@ -16,23 +16,10 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n,m;
-    bool ok = false;
-    cin>>n>>m;
-    vi a(n),b(m);
-    For(i,0,n) cin>>a[i];
-    For(i,0,m) cin>>b[i];
-    For(i,0,512){
-        For(j,0,n){
-            ok = false;
-            For(k,0,m){
-                if(((a[j]&b[k])|i) == i) ok = true;
-            }
-            if(!ok) break;
-        }
-        if(ok){
-            cout<<i<<"\n";
-            break;
-        }
-    }
+    int n,x,res=0;
+    map<int,int> mp;
+    cin>>n;
+    For(i,0,n) cin>>x,mp[x]++;
+    for(auto it: mp) res=max(res,it.se);
+    cout<<res<<"\n";
 }

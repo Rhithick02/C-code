@@ -14,25 +14,29 @@ using namespace std;
 #define fi first
 #define se second
 
+int a,b,x,fl=0;
+string s="";
+
+void fuct(){
+    while(x--){
+        if(fl) s+='0',a--;
+        else s+='1',b--;
+        fl^=1;
+    }
+    if(fl){
+        while(b--) s+='1';
+        while(a--) s+='0';
+    }
+    else{
+        while(a--) s+='0';
+        while(b--) s+='1';
+    }
+}
+
 int main(){
     ios::sync_with_stdio(false);
-    int n,m;
-    bool ok = false;
-    cin>>n>>m;
-    vi a(n),b(m);
-    For(i,0,n) cin>>a[i];
-    For(i,0,m) cin>>b[i];
-    For(i,0,512){
-        For(j,0,n){
-            ok = false;
-            For(k,0,m){
-                if(((a[j]&b[k])|i) == i) ok = true;
-            }
-            if(!ok) break;
-        }
-        if(ok){
-            cout<<i<<"\n";
-            break;
-        }
-    }
+    cin>>a>>b>>x;
+    if(a>b) fl=1;
+    fuct();
+    cout<<s<<"\n";
 }

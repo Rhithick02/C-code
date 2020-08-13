@@ -16,23 +16,19 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n,m;
-    bool ok = false;
-    cin>>n>>m;
-    vi a(n),b(m);
-    For(i,0,n) cin>>a[i];
-    For(i,0,m) cin>>b[i];
-    For(i,0,512){
-        For(j,0,n){
-            ok = false;
-            For(k,0,m){
-                if(((a[j]&b[k])|i) == i) ok = true;
-            }
-            if(!ok) break;
+    int n,q,x;
+    cin>>n>>q;
+    vi ar(n),st(32);
+    For(i,0,n) cin>>ar[i],st[log2(ar[i])]++;
+    For(i,0,q){
+        cin>>x;
+        int cnt=0;
+        for(int i=31;i>=0;i--){
+            int temp = min(st[i],x/(1<<i));
+            x -= temp*(1<<i);
+            cnt += temp;
         }
-        if(ok){
-            cout<<i<<"\n";
-            break;
-        }
+        if(!x) cout<<cnt<<"\n";
+        else cout<<"-1\n";
     }
 }
