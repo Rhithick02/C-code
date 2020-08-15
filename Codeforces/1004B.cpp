@@ -10,11 +10,14 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int t, x, sum = 0;
-    cin >> t;
-    For(i, 0, t){
-        cin >> x;
-        sum += x;
+    int n, m, l, r, fl = 0;
+    cin >> n >> m;
+    string res(n, ' ');
+    For(i, 0, m)
+        cin >> l >> r;
+    For(i, 0, n){
+        res[i] = fl + '0';
+        fl ^= 1;
     }
-    cout << sum << "\n";
+    cout << res << "\n";
 }

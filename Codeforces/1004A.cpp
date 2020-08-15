@@ -10,11 +10,13 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int t, x, sum = 0;
-    cin >> t;
-    For(i, 0, t){
-        cin >> x;
-        sum += x;
-    }
-    cout << sum << "\n";
+    int n, d, cnt = 0;
+    cin >> n >> d;
+    vector <int> ar(n);
+    set <int> te;
+    For(i, 0, n) cin >> ar[i];
+    For(i, 0, n-1)
+        if(ar[i+1] - ar[i] > 2*d) cnt += 2;
+        else if(ar[i+1] - ar[i] == 2*d) cnt++;
+    cout << cnt + 2 << "\n";
 }
