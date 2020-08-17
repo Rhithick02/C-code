@@ -1,20 +1,51 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define lli long long
-#define For(i,a,n) for(int i=(a);i<n;i++)
-#define asc(x) x.begin(),x.end()
-#define des(x) x.rbegin(),x.rend()
-#define pb push_back
-#define fi first
-#define se second
+#include <bits/stdc++.h>
 
-int main(){
-    ios::sync_with_stdio(false);
-    int t, x, sum = 0;
-    cin >> t;
-    For(i, 0, t){
-        cin >> x;
-        sum += x;
-    }
-    cout << sum << "\n";
+using namespace std;
+
+const int MAX = 200 * 1000 + 1;
+
+int n, k;
+vector<int> s, t;
+vector<int> cnts(MAX);
+
+bool can(int cnt) {
+	t.clear();
+	for (int i = 0; i < MAX; ++i) {
+		int need = min(cnts[i] / cnt, k - int(t.size()));
+		for (int j = 0; j < need; ++j) {
+			t.push_back(i);
+		}
+	}
+	return int(t.size()) == k;
+}
+
+int main() {
+#ifdef _DEBUG
+	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+#endif
+	
+	cin >> n >> k;
+	s = vector<int>(n);
+	for (int i = 0; i < n; ++i) {
+		cin >> s[i];
+	}
+	for (auto c : s) {
+		++cnts[c];
+	}
+	
+	int l = 0, r = n;
+	while (r - l > 1) {
+		int mid = (l + r) >> 1;
+		if (can(mid)) {
+			l = mid;
+		} else {
+			r = mid;
+		}
+	}
+	if (!can(r)) can(l);
+	for (auto it : t) cout << it << " ";
+	cout << endl;
+	
+	return 0;
 }
