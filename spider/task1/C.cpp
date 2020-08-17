@@ -42,7 +42,7 @@ int main(){
     For(i, 0, 6){
         int fl = 0;
         For(j, 0, 5){
-            if(ar[i] == ar[j]) fl = 1;
+            if(ar[i] == res[j]) fl = 1;
         }
         if(!fl) res.pb(ar[i]);
     }
