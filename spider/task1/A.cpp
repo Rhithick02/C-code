@@ -10,10 +10,15 @@ using namespace std;
 #define pb push_back
 #define fi first
 #define se second
-
+void check(int pos) {
+    if (pos == -1) {
+        cout << -1 << endl;
+        exit(0);
+    }
+}
 int main(){
     ios::sync_with_stdio(false);
-    int n, pos = 0;
+    int n, pos = -1;
     string s, a = "", b = "";
     cin >> n >> s;
     reverse(asc(s));
@@ -24,14 +29,17 @@ int main(){
         }
     }
     a = b = s;
+    check(pos);
     For(i, 0, pos) a[i] = '0';
     a[pos] = '1';
+    pos = -1;
     For(i, 0, s.length()) {
         if(s[i] == '1') {
             pos = i;
             break;
         }
     }
+    check(pos);
     For(i, 0, pos) b[i] = '1';
     b[pos] = '0';
     reverse(asc(a)), reverse(asc(b));
