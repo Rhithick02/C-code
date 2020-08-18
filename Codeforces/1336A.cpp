@@ -23,7 +23,7 @@ int dfs(vi edge[],int start,int level){
     height[start]=level;
     for(auto it: edge[start]){
         if(visited[it]) continue;
-        child[start]+=dfs(edge,it,level+1);
+        child[start] += dfs(edge,it,level+1);
     }
     return child[start]+1;
 }

@@ -12,9 +12,15 @@ using namespace std;
 #define se second
 
 int main(){
-	ios::sync_with_stdio(false);
-	vector <int> ar(5);
-	For(i, 0, 5) ar[i] = 5-i;
-	sort(ar.begin(), ar.begin() + 2);
-	for(auto it: ar) cout << it << " ";
+    ios::sync_with_stdio(false);
+    int n;
+    cin >> n;
+    vector <int> ar(n+1), child(n+1);
+    For(i, 2, n + 1) cin >> ar[i];
+    for(int i = n; i >= 1; i--) {
+        if(!child[i]) child[i] = 1;
+        child[ar[i]] += child[i];
+    }
+    sort(asc(child));
+    For(i, 0, n) cout << child[i] << " ";
 }
