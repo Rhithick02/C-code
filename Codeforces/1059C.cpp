@@ -13,20 +13,18 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    lli cnt = 0;
-    int n, m, val = 0;
-    bool num = false;
-    cin >> n >> m;
-    vector <int> ar(n);
-    map <int, int> mp;
-    mp[0] = 1;
-    For(i, 0, n) cin >> ar[i];
-    For(i, 0, n) {
-        if(ar[i] < m) val--;
-        else if(ar[i] > m) val++;
-        else num = true;
-        if(!num) mp[val]++;
-        else cnt += mp[val] + mp[val-1];
+    int n;
+    cin >> n;
+    vector <int> st(21);
+    For(i, 1, n+1) {
+        int cnt = 0, te = i;;
+        while(te % 2 == 0) {
+            cnt++;
+            te /= 2;
+        }
+        st[cnt]++;
     }
-    cout << cnt << "\n";
+    For(i, 0, 21)
+        For(j, 0, st[i])
+            cout << (1 << i) << " ";
 }
