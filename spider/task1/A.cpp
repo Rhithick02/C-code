@@ -43,5 +43,5 @@ int main(){
     For(i, 0, pos) b[i] = '1';
     b[pos] = '0';
     reverse(asc(a)), reverse(asc(b));
-    cout << a << " " << b << endl;
+    cout << b << " " << a << endl;
 }
