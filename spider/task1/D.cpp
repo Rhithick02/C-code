@@ -13,14 +13,14 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n, r, x, y, change = 0;
+    int n, r, x, y, te, change = 0;
     cin >> n >> r >> x >> y;
-    vector <int> c(n), s(n);
+    vector <int> c(n);
     For(i, 0, n) cin >> c[i];
     For(i, 0, n) {
-        cin >> s[i];
-        if(!c[i]) continue;
-        change += (s[i] == 1 ? x:-y);
+        cin >> te;
+        if(!c[i]) continue; // The days without contest doesnt matter
+        change += (te ? x:-y); // Adding x if he eats chicken or subracting y if he doesn't
     }
     if(change > 0) cout << "promoted\n";
     else if(change < 0) cout << "demoted\n";

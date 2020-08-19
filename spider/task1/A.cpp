@@ -24,17 +24,17 @@ int check(char val) {
 int main(){
     ios::sync_with_stdio(false);
     cin >> n >> s;
-    reverse(asc(s));
-    pos[0] = check('1');
-    pos[1] = check('0');
+    reverse(asc(s));      // Reversing the string
+    pos[0] = check('1');  // Checking for first '1' in the string
+    pos[1] = check('0');  // Checking for first '0' in the string
     if(pos[0] == -1 || pos[1] == -1) {
-        cout << -1 << endl;
+        cout << -1 << endl; // If there is no 1s or 0s -1
         exit(0);
     }
     a = b = s;
-    For(i, 0, pos[1]) a[i] = '0';
+    For(i, 0, pos[1]) a[i] = '0'; // Adding +1 to the binary string
     a[pos[1]] = '1';
-    For(i, 0, pos[0]) b[i] = '1';
+    For(i, 0, pos[0]) b[i] = '1'; // Adding -1 to the binary string
     b[pos[0]] = '0';
     reverse(asc(a)), reverse(asc(b));
     cout << b << " " << a << endl;

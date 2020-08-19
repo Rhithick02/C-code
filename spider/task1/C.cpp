@@ -24,12 +24,12 @@ int main(){
     ios::sync_with_stdio(false);
     int x[4], first;
     cout << "1 2\n" << flush;
-    cin >> x[0];
+    cin >> x[0]; // Finding which 2 elements product is x[1]
     fuct(x[0]);
     cout << "1 3\n" << flush;
     cin >> x[1];
-    fuct(x[1]);
-    if(te[0] == te[2] || te[0] == te[3])
+    fuct(x[1]); // Finding which 2 elements product is x[1] 
+    if(te[0] == te[2] || te[0] == te[3]) // Finding the pivot i.e, the first element
         first = ar[te[0]];
     else 
         first = ar[te[1]];
@@ -39,8 +39,8 @@ int main(){
     cin >> x[3];
     res.pb(first);
     For(i, 0, 4) res.pb(x[i]/first);
-    For(i, 0, 6){
-        int fl = 0;
+    For(i, 0, 6){  
+        int fl = 0; // Finding the last element
         For(j, 0, 5){
             if(ar[i] == res[j]) fl = 1;
         }
