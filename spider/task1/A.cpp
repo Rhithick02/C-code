@@ -10,38 +10,32 @@ using namespace std;
 #define pb push_back
 #define fi first
 #define se second
-void check(int pos) {
-    if (pos == -1) {
-        cout << -1 << endl;
-        exit(0);
+
+int n, pos[2];
+string s, a = "", b = "";
+int check(char val) {
+    For(i, 0, s.length()) {
+        if(s[i] == val) {
+            return i;
+        }
     }
+    return -1;
 }
 int main(){
     ios::sync_with_stdio(false);
-    int n, pos = -1;
-    string s, a = "", b = "";
     cin >> n >> s;
     reverse(asc(s));
-    For(i, 0, s.length()) {
-        if(s[i] == '0') {
-            pos = i;
-            break;
-        }
+    pos[0] = check('1');
+    pos[1] = check('0');
+    if(pos[0] == -1 || pos[1] == -1) {
+        cout << -1 << endl;
+        exit(0);
     }
     a = b = s;
-    check(pos);
-    For(i, 0, pos) a[i] = '0';
-    a[pos] = '1';
-    pos = -1;
-    For(i, 0, s.length()) {
-        if(s[i] == '1') {
-            pos = i;
-            break;
-        }
-    }
-    check(pos);
-    For(i, 0, pos) b[i] = '1';
-    b[pos] = '0';
+    For(i, 0, pos[1]) a[i] = '0';
+    a[pos[1]] = '1';
+    For(i, 0, pos[0]) b[i] = '1';
+    b[pos[0]] = '0';
     reverse(asc(a)), reverse(asc(b));
     cout << b << " " << a << endl;
 }
