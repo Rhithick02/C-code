@@ -13,7 +13,13 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    char te[] = {'a', 'c', 'b'};
-    sort(te, te + 3);
-    For(i, 0, 3) cout << te[i];
+    int n, x, maxi = 0;
+    cin >> n;
+    map <int, int> mp;
+    For(i, 0, n) {
+        cin >> x;
+        mp[x]++;
+    }
+    for(auto it: mp) maxi = max(maxi, it.se);
+    cout << n - maxi << "\n";
 }

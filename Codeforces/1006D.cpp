@@ -13,36 +13,28 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n, cnt = 0;
-    string a, b;
-    cin >> n >> a >> b;
-    For(i, 0, (n +1) / 2){
-        if(i == n-1-i) {
-            if(a[i] != b[i]) cnt++;
-            break;
+    int n, res = 0;
+    string s[2];
+    cin >> n >> s[0] >> s[1];
+    For(i, 0, (n + 1) / 2) {
+        if(i == n - 1 - i) {
+            res += (s[0][i] != s[1][i] ? 1:0);
+            continue;
         }
-        map <char, int> mp;
-        int fl = 0;
-        mp[a[i]]++, mp[a[n-1-i]]++;
-        mp[b[i]]++, mp[b[n-1-i]]++;
-        for(auto it: mp) {
-            if(it.se == 2) fl++;
+        int cnt = 10;
+        char te[] = {s[0][i], s[0][n-1-i], s[1][i], s[1][n-1-i]};
+        For(j, 0, 4) {
+            For(k, 0, 4) {
+                int temp = 0;
+                if(s[0][i] != te[j]) temp++;
+                if(s[0][n-1-i] != te[k]) temp++;
+                char st[] = {te[j], te[k], s[1][i], s[1][n-1-i]};
+                sort(st, st + 4);
+                if(st[0] == st[1] && st[2] == st[3])
+                    cnt = min(cnt, temp);
+            }
         }
-        if(fl == 2) continue;
-        if(i == 1) cout << "here";
-        if(a[i] != b[i] && a[i] != b[n-1-i]) {
-            if(a[n-1-i] != b[i] && a[n-1-i] != b[n-1-i])
-                cnt += 2;
-            else cnt += 1;
-        }
-        else if(a[i] == b[i]) {
-            if(a[n-1-i] != b[n-1-i])
-                cnt += 1;
-        }
-        else {
-            if(a[n-1-i] != b[i])
-                cnt += 1;
-        }
+        res += cnt;
     }
-    cout << cnt << "\n";
+    cout << res << endl;
 }
