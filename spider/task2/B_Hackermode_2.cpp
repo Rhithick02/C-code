@@ -37,7 +37,7 @@ int main(){
         res:10 -10 15 5 -15 -5
         the value at 1st index is 10 + 1 and at 3rd index it is 10 + 3
         whereas value at index 4 is 10 - 10 + 4 */               
-        if(i) maxi = max(maxi,  sum + ar[i] - 1);
+        maxi = max(maxi,  sum + ar[i] - 1);
         sum += res[i];
         maxi = max(maxi,  sum + ar[i]);
     }

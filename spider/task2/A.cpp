@@ -26,8 +26,7 @@ int main(){
                 res = i;
                 break;  // If '>' is greater than '<' then it wont be a valid prefix
             }
-            else if(!cnt)
-                res = i + 1;
+            else if(!cnt) res = i + 1;
         }
         cout << res << "\n";
     }
