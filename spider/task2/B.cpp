@@ -12,6 +12,7 @@ using namespace std;
 #define se second
 
 int main(){
+    // Hacker mode 1:
     ios::sync_with_stdio(false);
     int n, q, l, r, val;
     cin >> n >> q;
