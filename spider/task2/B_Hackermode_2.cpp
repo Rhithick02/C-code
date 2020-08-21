@@ -25,6 +25,7 @@ int main(){
         ar.pb(l), ar.pb(r + 1); // Adding indices l and r to new array
     }
     sort(asc(ar));
+    ar.pb(n);
     ar.resize(unique(asc(ar)) - ar.begin()); // Sorting and removing duplicate elements
     for(auto it: te) {
         l = lower_bound(asc(ar), it.fi.fi) - ar.begin(); // Finding the relative position of indices
