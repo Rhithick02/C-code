@@ -11,10 +11,11 @@ using namespace std;
 #define fi first
 #define se second
 #define MAX 200001
-vector <int> ar[MAX], lst, child(MAX), st(MAX);
-vector <bool> v(MAX);
+int lst[MAX], child[MAX], st[MAX], k;
+vector <int> ar[MAX];
+bool v[MAX];
 int dfs(int start) {
-    lst.pb(start);
+    lst[k++] = start;
     v[start] = true;
     for(auto it: ar[start]) {
         if(v[it]) continue;
