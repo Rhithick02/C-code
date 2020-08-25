@@ -13,7 +13,12 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string s = "hi";
-    s.pop_back();
-    cout << s;
+    int t;
+    cin >> t;
+    while(t--) {
+        lli p, f, cnt[2] = {0}, weight[2] = {0};
+        cin >> p >> f >> cnt[0] >> cnt[1] >> weight[0] >> weight[1];
+        int sword = min(cnt[0], p / weight[0]), axe = min(cnt[1], f / weight[1]);
+        cnt[0] -= sword,  cnt[1] -= axe;
+    }
 }

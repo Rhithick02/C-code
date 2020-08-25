@@ -13,7 +13,16 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string s = "hi";
-    s.pop_back();
-    cout << s;
+    int n, m, cnt = 0;
+    cin >> n >> m;
+    vector <int> c(n), a(m);
+    For(i, 0, n) cin >> c[i];
+    For(i, 0, m) cin >> a[i];
+    for(int i = 0, j = 0; i < n && j < m ; i++) {
+        if(c[i] <= a[j]) {
+            cnt++;
+            j++;
+        }
+    }
+    cout << cnt << "\n";
 }

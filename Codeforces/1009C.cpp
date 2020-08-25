@@ -13,7 +13,19 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string s = "hi";
-    s.pop_back();
-    cout << s;
+    lli n, m, x, d;
+    lli sum = 0;
+    cin >> n >> m;
+    For(i, 0, m) {
+        cin >> x >> d;
+        sum += n * x;
+        if(d >= 0) {
+            sum += d * (n * (n - 1) / 2);
+        }
+        else {
+            lli w = (n + 1) / 2;
+            sum += d * (w * (w - 1) + (n & 1 ? 0 : w));
+        }
+    }
+    cout << std :: fixed << setprecision(6) << 1.0 * sum / n << endl;
 }

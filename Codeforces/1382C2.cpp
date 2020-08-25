@@ -13,7 +13,12 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    string s = "hi";
-    s.pop_back();
-    cout << s;
+    int t;
+    cin >> t;
+    while(t--) {
+        vcetor <int> res;
+        int n;
+        string a, b;
+        cin >> n >> a >> b;
+    }
 }
