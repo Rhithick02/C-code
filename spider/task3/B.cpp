@@ -22,8 +22,8 @@ int main(){
     For(i, 0, n) st.insert(ar[i]);
     For(i, n, m) {
         lli te = *st.begin();
-        st.erase(st.begin());
-        st.insert(te + ar[i]);
+        st.erase(st.begin()); // Removing the nth smallest value.
+        st.insert(te + ar[i]); // adding nth value and greatest number of unused brick.
     }
     cout << *st.begin() << endl;
 }
