@@ -18,9 +18,9 @@ int main(){
     cin >> s;
     while(s.length() > 1) {
         int te = 0;
-        For(i, 0, s.length()) te += s[i] - '0';
-        s = to_string(te);
-        res++;
+        For(i, 0, s.length()) te += s[i] - '0'; // Finding the sum of digits
+        s = to_string(te); // That results into new string
+        res++; // Increasing the count by 1
     }
     cout << res << endl;
 }
