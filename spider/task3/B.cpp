@@ -13,6 +13,7 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
+    // This algorithm is wrong as it does not work for some test cases.
     int n, m;
     cin >> n >> m;
     vector <lli> ar(m);
@@ -22,8 +23,8 @@ int main(){
     For(i, 0, n) st.insert(ar[i]);
     For(i, n, m) {
         lli te = *st.begin();
-        st.erase(st.begin()); // Removing the nth smallest value.
-        st.insert(te + ar[i]); // adding nth value and greatest number of unused brick.
+        st.erase(st.begin()); // Removing the nth largest value.
+        st.insert(te + ar[i]); // adding nth value and greatest strength of unused brick.
     }
     cout << *st.begin() << endl;
 }

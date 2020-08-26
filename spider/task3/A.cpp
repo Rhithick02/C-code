@@ -10,15 +10,15 @@ using namespace std;
 #define pb push_back
 #define fi first
 #define se second
-
+#define n s.length()
 int main(){
     ios::sync_with_stdio(false);
     int res = 0;
     string s;
     cin >> s;
-    while(s.length() > 1) {
+    while(n > 1) {
         int te = 0;
-        For(i, 0, s.length()) te += s[i] - '0'; // Finding the sum of digits
+        For(i, 0, n) te += s[i] - '0'; // Finding the sum of digits
         s = to_string(te); // That results into new string
         res++; // Increasing the count by 1
     }
