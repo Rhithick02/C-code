@@ -13,7 +13,6 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    // I am also not sure whether this algorithm would work out
     /* I have done binary search to find the answer.
     If there are n elements above or equal to the magnitude of strength we get from binary search,
     then the maximum of such strength is the answer */
