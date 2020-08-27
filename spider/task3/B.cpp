@@ -19,8 +19,8 @@ int main(){
     vector <lli> ar(m);
     multiset <lli> st;
     For(i, 0, m) cin >> ar[i];
-    sort(des(ar));
-    For(i, 0, n) st.insert(ar[i]);
+    sort(des(ar)); // Sorting in descending order
+    For(i, 0, n) st.insert(ar[i]); // Inserting first n numbers
     For(i, n, m) {
         lli te = *st.begin();
         st.erase(st.begin()); // Removing the nth largest value.
