@@ -19,7 +19,7 @@ int main(){
     then the maximum of such strength is the answer */
     int n, m, cnt = 0;
     cin >> n >> m;
-    lli res = 1e18;
+    lli res = 0;
     vector <lli> ar(m);
     multiset <lli> st, te;
     For(i, 0, m) {
@@ -46,7 +46,7 @@ int main(){
         }
         if(cnt >= n) {
             low = mid + 1;
-            res = mid;
+            res = max(res, mid);
         }
         else high = mid - 1;
     }
