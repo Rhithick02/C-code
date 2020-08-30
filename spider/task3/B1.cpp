@@ -13,8 +13,9 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    /* I have done binary search to find the answer.
-    If there are n elements above or equal to the magnitude of strength we get from binary search,
+    /* I have tried 2 algorithms one with O(mlog^2(m))(B1.cpp) which may or may not be correct for all test cases and another one
+    is with O(m*2^m)(B2.cpp) which is correct for all testcases with m's constraint */
+    /* If there are n elements above or equal to the magnitude of strength we get from binary search,
     then the maximum of such strength is the answer */
     int n, m, cnt = 0;
     cin >> n >> m;
@@ -25,7 +26,7 @@ int main(){
         cin >> ar[i];
         st.insert(ar[i]);
     }
-    lli low = 1, high = 1e18, mid;
+    lli low = 1, high = 1e14, mid;
     while(low <= high) {
         mid = low + high >> 1;
         cnt = 0;
