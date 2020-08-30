@@ -19,7 +19,15 @@ int main(){
     lli res = 0;
     cin >> n >> m;
     vector <lli> ar(m);
-    For(i, 0, m) cin >> ar[i];
+    For(i, 0, m) {
+        cin >> ar[i];
+        res += ar[i];
+    }
+    if(n == 1) {
+        cout << res << endl;
+        exit(0);
+    }
+    res = 0;
     For(i, 0, (1 << m) + 1) {
         int te = i, cnt = 0;
         lli sum[2] = {0};
