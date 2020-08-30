@@ -13,6 +13,15 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    if(pow(2, 100000) > 2e14) cout << "bye";
-    else cout << "hi";
+    int n;
+    cin >> n;
+    vector <lli> ar(n);
+    For(i, 0, n) cin >> ar[i];
+    cout << "1 " << n << endl;
+    For(i, 0, n) cout << -1LL * (n * ar[i]) << " ";
+    cout << endl;
+    cout << "1 " << max(1, n - 1) << endl;
+    For(i, 0, max(1, n - 1)) cout << 1LL * (n - 1) * ar[i] << " ";
+    cout << endl;
+    cout << n << " " << n << endl << 1LL * (n - 1) * ar[n - 1] << endl;
 }
