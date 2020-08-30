@@ -13,7 +13,8 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    // Considering all possible subsets. Works for m <= 22 aprx
+    // This algorithm would only work for m <= 22 with a O(m * 2 ^ m)
+    // Considering all possible subsets.
     int n, m;
     lli res = 0;
     cin >> n >> m;
