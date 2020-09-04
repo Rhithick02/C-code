@@ -16,9 +16,20 @@ int main(){
     int t;
     cin >> t;
     while(t--) {
-        vcetor <int> res;
-        int n;
+        int n, track = 0, flip = 0;
         string a, b;
         cin >> n >> a >> b;
+        vector <int> res;
+        for(int i = n - 1; i >= 0; i--) {
+            if(flip ^ (a[track] == b[i]))
+                res.pb(1);
+            res.pb(i + 1);
+            if(flip) track -= i;
+            else track += i;
+            flip ^= 1;
+        }
+        cout << res.size() << " ";
+        for(auto it: res) cout << it << " ";
+        cout << "\n";
     }
 }
