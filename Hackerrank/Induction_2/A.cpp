@@ -13,5 +13,12 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    
+    lli n, k, ans = 0;
+    cin >> n >> k;
+    if(k == 1) {
+        cout << n << endl;
+        exit(0);
+    }
+    ans = log2(n) + 1;
+    cout << (1LL << ans) - 1 << endl;
 }
