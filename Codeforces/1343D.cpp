@@ -18,8 +18,9 @@ int main(){
     while(t--) {
         int n, k, cnt = 0;
         cin >> n >> k;
-        vector <int> ar(n);
+        vector <int> ar(n), st(2 * k + 1);
         For(i, 0, n) cin >> ar[i];
+        For(i, 0, n / 2) st[ar[i] + ar[n - 1 - i]]++;
         
     }
 }
