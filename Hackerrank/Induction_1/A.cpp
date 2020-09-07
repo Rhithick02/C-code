@@ -11,13 +11,11 @@ using namespace std;
 #define fi first
 #define se second
 int cnt = 0;
-void divisors(lli k)
-{
-    For(i, 1, (int)sqrt(k) + 1)
-    {
+void divisors(lli k) {
+    For(i, 1, (int)sqrt(k) + 1) {
         if(k % i != 0)  continue;
         cnt++;
-        if(i != k/i) cnt++;
+        if(i != k / i) cnt++;
     }
 }
 

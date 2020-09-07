@@ -24,7 +24,7 @@ int main(){
                 continue;
             }
             if(s1[i - 1] == s2[j - 1])
-                st[i][j] = 1;
+                st[i][j] = st[i - 1][j - 1] + 1;
             else st[i][j] = max(st[i - 1][j], st[i][j - 1]);
         }
     }
