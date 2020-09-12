@@ -13,8 +13,5 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    vector <pair<int, int>> ar(5);
-    For(i, 0, 5) ar[i] = {i, i};
-    ar.erase(ar.begin() + 1);
-    For(i, 0, 4) cout << ar[i].fi << " " << ar[i].se << "\n";
+    cout << (494 + 25) % 26;
 }
