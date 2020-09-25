@@ -1,147 +1,89 @@
-#include <iostream>
-#include <map>
-#include<cstdlib>
-#include <queue>
+#include <bits/stdc++.h>
+
+#define mp make_pair
+#define mt make_tuple
+#define fi first
+#define se second
+#define pb push_back
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define forn(i, n) for (int i = 0; i < (int)(n); ++i)
+#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)
+#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)
+#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)
 
 using namespace std;
 
-struct node {
-    int density;
-    char owner;
-};
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+typedef vector<pii> vpi;
+typedef vector<vi> vvi;
+typedef long long i64;
+typedef vector<i64> vi64;
+typedef vector<vi64> vvi64;
+typedef pair<i64, i64> pi64;
+typedef double ld;
 
-node grid[10][10];
-int filledBoxes;
-map < char, int > score;
+template<class T> bool uin(T &a, T b) { return a > b ? (a = b, true) : false; }
+template<class T> bool uax(T &a, T b) { return a < b ? (a = b, true) : false; }
 
-// To check whether the indices are within the table
-bool valid(int i, int j) {  
-    return i>=0 && j>=0 && i<10 && j<10;
+const int maxn = 310000;
+const i64 P = 998244353;
+
+i64 fact[maxn], tcaf[maxn];
+
+i64 deg(i64 x, i64 d) {
+    if (d < 0) d += P - 1;
+    i64 y = 1;
+    while (d) {
+        if (d & 1) (y *= x) %= P;
+        d /= 2;
+        (x *= x) %= P;
+    }
+    return y;
 }
 
-// Initialising the grid and variables
-void setup() {  
-    filledBoxes = 0;
-    score['@'] = 0;
-    score['#'] = 0;
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            grid[i][j].density = 0;
-            grid[i][j].owner = ' ';
-        }
-    }
-}
-
-// The table is printed and also the constant updation happens here after the user enters the input
-void printgrid() {  
-    system("clear");
-    score['@'] = score['#'] = filledBoxes = 0;
-    cout << "\n\n";
-    for (size_t i = 0; i < 53; i++) {
-        cout << "# ";
-    }
-    cout << endl;
-    cout << "#  ";
-    for (int i = 0; i < 10; i++) {
-        cout << " ---" << i + 1 << "---- ";
-    }
-    cout << " #" << endl;
-    for (int i = 0; i < 10; i++) {
-        cout << "#";
-        if (i != 9) {
-            cout << ' ';
-        }
-        std::cout << i + 1 << ' ';
-        for (int j = 0; j < 10; j++) {
-            score[grid[i][j].owner]++;
-            cout << "( " << grid[i][j].owner << ", ";
-            if (grid[i][j].density != 0) {
-                filledBoxes++;
-                cout << grid[i][j].density << " )  ";
-            } else cout << "  )  ";
-        }
-        cout << " #" << endl;
-    }
-    for (size_t i = 0; i < 53; i++) {
-        cout << "# ";
-    }
-    cout << "\n\n";
-    cout << "Score @ : " << score['@'] << "\t\t" << "Score #: " << score['#'] << "\n\n";
-
-}
-
-// To check whether the cell is capable of expanding
-bool canExplode(int row, int col) {  
-    if ((row == 0 and col == 0) ||
-        (row == 9 and col == 0) ||
-        (row == 0 and col == 9) ||
-        (row == 9 and col == 9)) {
-        if (grid[row][col].density == 1) {
-            return true;
-        }
-    } else if (row == 0 || row == 9 || col == 0 || col == 9) {
-        if (grid[row][col].density == 2) {
-            return true;
-        }
-    } else if (grid[row][col].density == 3) {
-        return true;
-    }
-    return false;
-}
-
-// Expanding the territiory
-void bfs(int row, int col, char own, char child) {  
-    queue <pair<int, int> > q;
-
-    q.push({row, col});
-    while(!q.empty()) {
-        pair<int, int> cur = q.front();
-        q.pop();
-        if(canExplode(cur.first, cur.second)) {
-            grid[cur.first][cur.second].density = 0;
-            grid[cur.first][cur.second].owner = ' ';
-            int dx[] = {-1, 1, 0, 0}, dy[] = {0, 0, -1, 1};
-
-            for(int i = 0; i < 4; i++) {
-                int x = cur.first + dx[i], y = cur.second + dy[i];
-                if(!valid(x, y)) continue;
-                    q.push({x, y});
-            }
-
-        } else {
-            grid[cur.first][cur.second].density++;
-            grid[cur.first][cur.second].owner = own;
-        }
-    }
-}
-
-// Getting input from the user
-pair < int, int > input(char player) {  
-    int m, n;
-    cout << "Player: " << player << " Enter the Co-ordinates ";
-    char secplayer = (player == '@' ? '#' : '@');
-    while (true) {
-        cin >> m >> n;
-        if (grid[m-1][n-1].owner == secplayer || !valid(m - 1, n - 1)) {
-            std::cout << "Enter a valid index: ";
-        } else break;
-    }
-    return make_pair(m - 1, n - 1);
+i64 cnk(int n, int k) {
+    if (k < 0 || k > n) return 0;
+    return fact[n] * tcaf[k] % P * tcaf[n - k] % P;
 }
 
 int main() {
-    setup();
-    char player = '@';
-    // If the filed box is 100 and player cant make a move the game ends
-    while (filledBoxes != 100) {
-        printgrid();
-        pair < int, int > p = input(player);
-        bfs(p.first, p.second, player, (player == '@' ? '#' : '@'));
-        player = (player == '@' ? '#' : '@');
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.precision(10);
+    cout << fixed;
+#ifdef LOCAL_DEFINE
+    freopen("input.txt", "rt", stdin);
+#endif
+
+    int n, k;
+    cin >> n >> k;
+    fact[0] = 1;
+    for1(i, n) fact[i] = i * fact[i - 1] % P;
+    forn(i, n + 1) tcaf[i] = deg(fact[i], -1);
+
+    i64 ans = 0;
+    int bal = 0;
+    vector<pii> evs;
+    forn(i, n) {
+        int l, r;
+        cin >> l >> r;
+        ++r;
+        evs.pb(mp(l, 1));
+        evs.pb(mp(r, -1));
     }
-    if (score['@'] > score['#']) {
-        cout << "Player @ won." << endl;
-    } else if (score['@'] < score['#']) {
-        cout << "Player # won." << endl;
-    } else std::cout << "We got a tie." << endl;
+    sort(all(evs));
+    for (auto w: evs) { 
+        if (w.se == 1) {
+            (ans += cnk(bal, k - 1)) %= P;
+            ++bal;
+        } else --bal;
+    }
+    cout << ans << '\n';
+
+#ifdef LOCAL_DEFINE
+    cerr << "Time elapsed: " << 1.0 * clock() / CLOCKS_PER_SEC << " s.\n";
+#endif
+    return 0;
 }
