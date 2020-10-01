@@ -13,6 +13,17 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int te = -1;
-    cout << (te)%3;
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, k, cnt = 0;
+        cin >> n >> k;
+        vector <int> ar(n);
+        For(i, 0, n) cin >> ar[i];
+        sort(asc(ar));
+        For(i, 1, n) {
+            cnt += (k - ar[i]) / ar[0];
+        }
+        cout << cnt << "\n";
+    }
 }

@@ -13,6 +13,12 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int te = -1;
-    cout << (te)%3;
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, x;
+        cin >> n >> x;
+        int te = n - 2;
+        cout << 1 + max(0,(te + x - 1) / x) << "\n";
+    }
 }

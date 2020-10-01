@@ -13,6 +13,17 @@ using namespace std;
 
 int main(){
     ios::sync_with_stdio(false);
-    int te = -1;
-    cout << (te)%3;
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, m, u[4];
+        bool ok = false;
+        cin >> n >> m;
+        For(i, 0, n) {
+            For(i, 0, 4) cin >> u[i];
+            if(u[1] == u[2]) ok = true;
+        }
+        if((m & 1) || !ok ) cout << "NO\n";
+        else cout << "YES\n";
+    }
 }
