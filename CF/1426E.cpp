@@ -10,7 +10,8 @@ using namespace std;
 #define pb push_back
 #define fi first
 #define se second
-int res[2];
+#define inf 1000000000
+int res[2] = {inf, 0};
 void winning(vector <int> ab[]) {
     For(i, 0, 3) {
         int te = min(ab[0][i], ab[1][(i+1)%3]);
@@ -19,18 +20,22 @@ void winning(vector <int> ab[]) {
     }
 }
 void loosing(vector <int> te[]) {
+    vector <pair<int,int>> ar;
     For(i, 0, 3) {
-        int tem = min(te[0][i], te[1][(i+2)%3]);
-        te[0][i] -= tem, te[1][(i+2)%3] -= tem;
+        ar.pb({i, i});
+        ar.pb({i, (i+2)%3});
     }
-    For(i, 0, 3) {
-        if(!te[0][i]) continue;
-        if(te[1][i]) {
-            int tem = min(te[0][i], te[1][i]);
-            te[0][i] -= tem;
+    do {
+        vector <int> s[2];
+        s[0] = te[0], s[1] = te[1];
+        For(i, 0, 6) {
+            int mini = min(s[0][ar[i].fi], s[1][ar[i].se]);
+            s[0][ar[i].fi] -= mini, s[1][ar[i].se] -= mini;
         }
-        res[0] += te[0][i];
-    }
+        int cnt = 0;
+        For(i, 0, 3) cnt += s[0][i];
+        res[0] = min(res[0], cnt);
+    } while(next_permutation(asc(ar)));
 }
 int main(){
     ios::sync_with_stdio(false);
