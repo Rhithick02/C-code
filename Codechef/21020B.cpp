@@ -11,23 +11,30 @@ using namespace std;
 #define fi first
 #define se second
 
+lli fast_exp(lli a, lli x, lli p) {
+    lli res = 1;
+    while(x) {
+        if(x & 1) {
+            res *= a;
+            res %= p;
+        }
+        x = x >> 1;
+        a = (a * a) % p;
+    }
+    return res % p;
+}
 int main(){
     ios::sync_with_stdio(false);
     int t;
     cin >> t;
     while(t--) {
-        int cnt = 0, res = 0;
-        string s;
-        cin >> s;
-        For(i, 0, s.length()) {
-            if(s[i] == '<') cnt++;
-            else cnt--;
-            if(cnt < 0) {
-                res = i;
-                break;  // If '>' is greater than '<' then it wont be a valid prefix
-            }
-            else if(!cnt) res = i + 1;
+        lli a, n, p;
+        cin >> a >> n >> p;
+        lli prod = a;
+        For(i, 2, n + 1) {
+            prod = fast_exp(prod, 1LL * i, p);
+            prod %= p;
         }
-        cout << res << "\n";
+        cout << prod << "\n";
     }
 }
