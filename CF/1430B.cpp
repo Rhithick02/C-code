@@ -18,7 +18,20 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    indexed_set te;
-    te.insert(0);
-    cout << te[0];
+    int t;
+    cin >> t;
+    while(t--) {
+        lli n, k, dif = 0;
+        cin >> n >> k;
+        deque <lli> ar(n);
+        For(i, 0, n) cin >> ar[i];
+        sort(des(ar));
+        dif = ar[0];
+        ar.pop_front();
+        while(k--) {
+            dif += ar.front();
+            ar.pop_front();
+        }
+        cout << dif << "\n";
+    }
 }

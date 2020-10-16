@@ -18,7 +18,22 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    indexed_set te;
-    te.insert(0);
-    cout << te[0];
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, three = 0, five = 0, seven = 0;
+        cin >> n;
+        three = n / 3;
+        n -= 3 * three;
+        if(n % 3 == 0) {
+            cout << three << " 0 0";
+        } else if(n % 3 == 2) {
+            if(three >= 1) cout << three - 1 << " 1 0";
+            else cout << "-1";
+        } else {
+            if(three >= 2) cout << three - 2 << " 0 1";
+            else cout << "-1";
+        }
+        cout << "\n";
+    }
 }

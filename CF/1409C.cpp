@@ -18,7 +18,28 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    indexed_set te;
-    te.insert(0);
-    cout << te[0];
+    int t;
+    cin >> t;
+    while(t--) {
+        int x, y, n, d;
+        cin >> n >> x >> y;
+        vector <int> ar;
+        For(i, 1, n) {
+            if((y - x) % (n - i)) continue;
+            d = (y - x) / (n - i);
+            break;
+        }
+        int num = y;
+        while(n > 0 && num > 0) {
+            ar.pb(num);
+            num -= d;
+            n--;
+        } while(n) {
+            ar.pb(y + d);
+            y += d;
+            n--;
+        }
+        for(auto it: ar) cout << it << " ";
+        cout << "\n";
+    }
 }

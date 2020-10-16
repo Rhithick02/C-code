@@ -18,7 +18,17 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    indexed_set te;
-    te.insert(0);
-    cout << te[0];
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, buf;
+        cin >> n;
+        buf = n;
+        cout << 2 << "\n";
+        cout << buf << " " << buf - 1 << "\n";
+        For(i, 0, n - 2) {
+            cout << buf << " " << buf - 2 << "\n";
+            buf--;
+        }
+    }
 }

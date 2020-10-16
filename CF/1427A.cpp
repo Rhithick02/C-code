@@ -18,7 +18,24 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    indexed_set te;
-    te.insert(0);
-    cout << te[0];
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, sum = 0;
+        cin >> n;
+        vector <int> ar(n);
+        For(i, 0, n) {
+            cin >> ar[i];
+            sum += ar[i];
+        }
+        if(!sum) {
+            cout << "NO\n";
+            continue;
+        }
+        if(sum < 0) sort(asc(ar));
+        else sort(des(ar));
+        cout << "YES\n";
+        for(auto it: ar) cout << it << " ";
+        cout << "\n";
+    }
 }
