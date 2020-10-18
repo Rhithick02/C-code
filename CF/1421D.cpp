@@ -18,7 +18,20 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    string s = "hihowareyou";
-    string te = s.substr(2, 3);
-    cout << te;
+    int t;
+    cin >> t;
+    while(t--) {
+        lli x, y, cost[6] = {0}, val = 0, cur_x = 0, cur_y = 0;
+        cin >> x >> y;
+        For(i, 0, 6) cin >> cost[i];
+        int right = min(cost[1], cost[0]+cost[2]);
+        int left = min(cost[4], cost[3]+cost[5]);
+        int top_right = min(cost[0], cost[5]+cost[1]);
+        int top = min(cost[5], cost[0]+cost[4]);
+        int bot_left = min(cost[3], cost[4]+cost[2]);
+        int bot = min(cost[2], cost[1]+cost[3]);
+        if(x != cur_x && y != cur_y) {
+            
+        }
+    }
 }

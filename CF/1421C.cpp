@@ -1,7 +1,7 @@
 #pragma GCC optimize("Ofast")
 #pragma GCC target("avx,avx2,fma")
 #pragma GCC optimization ("unroll-loops")
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 using namespace std;
@@ -16,9 +16,16 @@ using namespace std;
 typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
+int cnt = 0, n;
 int main(){
     ios::sync_with_stdio(false);
-    string s = "hihowareyou";
-    string te = s.substr(2, 3);
-    cout << te;
+    string s;
+    cin >> s;
+    n = s.length();
+    vector <pair<char, int>> ans;
+    ans.pb({'R', n-1});
+    ans.pb({'L', n});
+    ans.pb({'L', 2});
+    cout << ans.size() << "\n";
+    for(auto it: ans) cout << it.fi << " " << it.se << "\n";
 }

@@ -16,9 +16,32 @@ using namespace std;
 typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
+lli power(lli x, lli y) {
+    lli res = 1;
+    while(y > 0) {
+        if(y & 1)
+            res = (res * x);
+        y = y >> 1;
+        x = (x * x);
+    }
+    return res;
+}
 int main(){
     ios::sync_with_stdio(false);
-    string s = "hihowareyou";
-    string te = s.substr(2, 3);
-    cout << te;
+    int t;
+    cin >> t;
+    while(t--) {
+        lli a, b, val = 0, cnt = 0;
+        cin >> a >> b;
+        lli tea = a, teb = b;
+        while(a && b) {
+            if((a & 1) && (b & 1)) {
+                val += power(2, cnt);
+            }
+            a = a >> 1;
+            b = b >> 1;
+            cnt++;
+        }
+        cout << (tea ^ val) + (teb ^ val) << "\n";
+    }
 }
