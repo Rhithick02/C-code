@@ -21,17 +21,33 @@ int main(){
     int t;
     cin >> t;
     while(t--) {
-        lli x, y, cost[6] = {0}, val = 0, cur_x = 0, cur_y = 0;
+        lli x, y, c[6] = {0}, val = 0, cur_x = 0, cur_y = 0, temp = 0;
         cin >> x >> y;
-        For(i, 0, 6) cin >> cost[i];
-        int right = min(cost[1], cost[0]+cost[2]);
-        int left = min(cost[4], cost[3]+cost[5]);
-        int top_right = min(cost[0], cost[5]+cost[1]);
-        int top = min(cost[5], cost[0]+cost[4]);
-        int bot_left = min(cost[3], cost[4]+cost[2]);
-        int bot = min(cost[2], cost[1]+cost[3]);
-        if(x != cur_x && y != cur_y) {
-            
+        For(i, 0, 6) cin >> c[i];
+        if(cur_x < x) temp += (x - cur_x) * c[5];
+        if(cur_x > x) temp += (cur_x - x) * c[2];
+        if(cur_y < y) temp += (y - cur_y) * c[1];
+        if(cur_y > y) temp += (cur_y - y) * c[4];
+
+        if(cur_x < x) {
+            val += (x - cur_x) * c[0];
+            if(y - x < 0) val += (x - y) * c[4];
+            else val += (y - x) * c[1];
+        } else {
+            val += (cur_x - x) * c[3];
+            if(y - x < 0) val += (x - y) * c[4];
+            else val += (y - x) * c[1];
         }
+        val = min(val, temp), temp = 0;
+        if(cur_y < y) {
+            temp += (y - cur_y) * c[0];
+            if(y - x < 0) temp += (x - y) * c[5];
+            else temp += (y - x) * c[2];
+        } else {
+            temp += (cur_y - y) * c[3];
+            if(y - x < 0) temp += (x - y) * c[5];
+            else temp += (y - x) * c[2];
+        }
+        cout << min(val, temp) << "\n";
     }
 }
