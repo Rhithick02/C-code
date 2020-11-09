@@ -18,31 +18,22 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    int t;
-    cin >> t;
-    while(t--) {
-        bool ok = true;
-        int n, mini = 2e9;
-        cin >> n;
-        vector <int> ar(n), min_forw, min_rev(n);
-        For(i, 0, n) {
-            cin >> ar[i];
-            mini = min(mini, ar[i]);
-            min_forw.pb(mini);
-        }
-        mini = 2e9;
-        For(i, 0, n) {
-            mini = min(mini, ar[n-1-i]);
-            min_rev[n-1-i] = mini;
-        }
-        For(i, 1, n-1) {
-            if(ar[i] > min_forw[i-1] + min_rev[i+1])
-                ok = false;
-        }
-        if(ok) {
-            cout << "YES\n";
+    int n, x, cnt = 0;
+    cin >> n >> x;
+    vector <int> ar(n);
+    For(i, 0, n) cin >> ar[i];
+    sort(asc(ar));
+    for(int i = 0, j = n-1; i <= j;) {
+        if(i == j) {
+            cnt++;
+            break;
+        } else if(ar[i] + ar[j] <= x) {
+            cnt++;
+            i++, j--;
         } else {
-            cout << "NO\n";
+            cnt++;
+            j--;
         }
     }
+    cout << cnt << "\n";
 }
