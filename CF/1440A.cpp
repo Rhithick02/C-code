@@ -18,19 +18,20 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n;
-    cin >> n;
-    vector <int> ar(n);
-    multiset <int> te;
-    For(i, 0, n) {
-        cin >> ar[i];
-        if(!te.size() || ar[i] >= *te.rbegin()) {
-            te.insert(ar[i]);
+    int t;
+    cin >> t;
+    while(t--) {
+        string s;
+        int n, cost[2], h, cnt[2] = {0}, res = 0;
+        cin >> n >> cost[0] >> cost[1] >> h >> s;
+        For(i, 0, n) cnt[s[i]-'0']++;
+        if(cost[1] + h <= cost[0]) {
+            res += cnt[0] * (cost[1] + h) + cnt[1] * cost[1];
+        } else if (cost[0] + h <= cost[1]) {
+            res += cnt[1] * (cost[0] + h) + cnt[0] * cost[0];
         } else {
-            auto it = te.upper_bound(ar[i]);
-            te.erase(it);
-            te.insert(ar[i]);
+            res += cnt[0] * cost[0] + cnt[1] * cost[1];
         }
+        cout << res << "\n";
     }
-    cout << te.size() << "\n";
 }
