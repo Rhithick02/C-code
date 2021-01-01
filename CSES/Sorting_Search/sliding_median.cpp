@@ -17,10 +17,18 @@ typedef tree<pair<int, int>,null_type,less<pair<int, int>>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
 int main(){
-	ios::sync_with_stdio(false);
-	indexed_set st;
-	st.insert({5, 1});
-	st.insert({5, 2});
-	auto x = st.find_by_order(1);
-	cout << (*x).fi;
+    ios::sync_with_stdio(false);
+    int n, k;
+    cin >> n >> k;
+    vector <int> ar(n);
+    indexed_set st;
+    For(i, 0, n) {
+        cin >> ar[i];
+        st.insert({ar[i], i});
+        if(st.size() == k) {
+            auto x = st.find_by_order((k-1)/2);
+            cout << (*x).fi << " ";
+            st.erase({ar[i-k+1], i-k+1});
+        }
+    }
 }

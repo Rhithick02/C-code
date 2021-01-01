@@ -13,14 +13,22 @@ using namespace std;
 #define fi first
 #define se second
 #define mod 1000000007
-typedef tree<pair<int, int>,null_type,less<pair<int, int>>,rb_tree_tag,
+typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
 int main(){
-	ios::sync_with_stdio(false);
-	indexed_set st;
-	st.insert({5, 1});
-	st.insert({5, 2});
-	auto x = st.find_by_order(1);
-	cout << (*x).fi;
+    ios::sync_with_stdio(false);
+    lli n, te, cnt = 0;
+    cin >> n;
+    map <lli, lli> mp;
+    lli sum = 0;
+    For(i, 0, n) {
+        cin >> te;
+        sum += te;
+        if(sum % n == 0)
+            cnt++;
+        cnt += mp[(sum%n+n)%n];
+        mp[(sum%n+n)%n]++;
+    }
+    cout << cnt << "\n";
 }
