@@ -16,42 +16,44 @@ using namespace std;
 typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
+int n;
+int ishill(int i, vector <pair<int, int>> &ar) {
+    return (i + 1 < n && i > 0 && ar[i].fi > ar[i-1].fi && ar[i].fi > ar[i+1].fi);
+}
+int isvalley(int i, vector <pair<int, int>> &ar) {
+    return (i + 1 < n && i > 0 && ar[i].fi < ar[i-1].fi && ar[i].fi < ar[i+1].fi);
+}
+
 int main(){
     ios::sync_with_stdio(false);
     int t;
     cin >> t;
     while(t--) {
-        int n, res = 0;
+        int res = 0;
         cin >> n;
         vector <pair<int, int>> ar(n);
         For(i, 0, n) cin >> ar[i].fi;
         For(i, 1, n-1) {
-            if(ar[i].fi > ar[i-1].fi && ar[i].fi > ar[i+1].fi)
+            if(ishill(i, ar) || isvalley(i, ar)) {
                 ar[i].se = 1;
-            if(ar[i].fi < ar[i-1].fi && ar[i].fi < ar[i+1].fi)
-                ar[i].se = -1;
-        }
-        int cnt = 0;
-        For(i, 1, n-1) {
-            if(i+2 != n && ar[i].se && ar[i+1].se && ar[i+2].se) {
-                if(ar[i].fi >= ar[i+2].fi && ar[i].se == 1) {
-                    cnt = max(cnt, 3);
-                } else if(ar[i].fi <= ar[i+2].fi && ar[i].se == -1) {
-                    cnt = max(cnt, 3);
-                } else {
-                    cnt = max(cnt, 2);
-                }
-            } else if(ar[i].se && ar[i+1].se) {
-                if(ar[i].se == 1 && ((ar[i-1].fi <= ar[i+1].fi) || (i+2 != n && ar[i].fi <= ar[i+2].fi))) {
-                    cnt = max(cnt, 2);
-                } else if(ar[i].se == -1 && ((ar[i-1].fi >= ar[i+1].fi) || (i+2 != n && ar[i].fi >= ar[i+2].fi))) {
-                    cnt = max(cnt, 2);
-                } else cnt = max(cnt, 1);
-            } else if(ar[i].se) {
-                cnt = max(cnt, 1);
+                res++;
             }
-            if(ar[i].se) res++;
         }
-        cout << res - cnt << "\n";
+        int cnt = res;
+        For(i, 1, n-1) {
+            int te = ar[i].fi;
+            ar[i].fi = ar[i-1].fi;
+            int delhil = ishill(i-1, ar) + ishill(i, ar) + ishill(i+1, ar);
+            int delval = isvalley(i-1, ar) + isvalley(i, ar) + isvalley(i+1, ar);
+            int curch = ar[i].se + ar[i-1].se + ar[i+1].se;
+            cnt = min(cnt, res - curch + delhil + delval);
+            ar[i].fi = ar[i+1].fi;
+            delhil = ishill(i-1, ar) + ishill(i, ar) + ishill(i+1, ar);
+            delval = isvalley(i-1, ar) + isvalley(i, ar) + isvalley(i+1, ar);
+            curch = ar[i].se + ar[i-1].se + ar[i+1].se;
+            cnt = min(cnt, res - curch + delhil + delval);
+            ar[i].fi = te;
+        }
+        cout << cnt << "\n";
     }
 }
