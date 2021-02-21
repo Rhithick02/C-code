@@ -1,8 +1,3 @@
-// WRONG METHOD
-
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
 #include<bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
@@ -19,39 +14,27 @@ using namespace std;
 typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
-int n, k, maxi, mark, res, cur, nxt;
-
-int do_function(vector <int> x) {
-    while(cur < n) {
-        if(nxt - cur >= maxi) {
-            maxi = nxt - cur;
-            mark = cur;
-        }
-        cur++;
-        while(cur < n && x[cur] == x[cur-1]) cur++;
-        nxt = upper_bound(asc(x), x[cur] + k) - x.begin();
-    }
-    return maxi;
-}
 int main(){
     ios::sync_with_stdio(false);
     int t;
     cin >> t;
     while(t--) {
+        int n, k, dummy, cnt = 0;
         cin >> n >> k;
-        vector <int> x(n), y(n);
+        vector <int> x(n), st(n+1), s(n);
         For(i, 0, n) cin >> x[i];
-        For(i, 0, n) cin >> y[i];
+        For(i, 0, n)  cin >> dummy;
         sort(asc(x));
-        cur = 0, maxi = 0, res = 0;
-        nxt = upper_bound(asc(x), x[cur] + k) - x.begin();
-        res += do_function(x);
-        For(i, mark, mark + maxi) x[i] = 0;
-        sort(asc(x));
-        cur = 0, maxi = 0;
-        while(cur < n && !x[cur]) cur++;
-        nxt = upper_bound(asc(x), x[cur] + k) - x.begin();
-        res += do_function(x);
-        cout << res << "\n";
+        For(i, 0, n) {
+            int end = upper_bound(asc(x), x[i] + k) - x.begin();
+            s[i] = end - i;
+        }
+        for(int i = n-1; i >= 0; i--) {
+            st[i] = max(st[i+1], s[i]);
+        }
+        for(int i = 0; i < n; i++) {
+            cnt = max(cnt, s[i] + st[i+s[i]]);
+        }
+        cout << cnt << endl;
     }
 }
