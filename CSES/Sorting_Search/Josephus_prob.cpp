@@ -15,13 +15,25 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    int n, cnt = -1;
+    int n, cnt = -1, v = 0;
     cin >> n;
-    indexed_set te;
-    For(i, 1, n+1) te.insert(i);
-    while(te.size()) {
-        cnt = (cnt + 2) % n;
-        te.or
-        te.erase()
+    vector <int> ar(n);
+    For(i, 0, n) ar[i] = i+1;
+    while(v < n) {
+        if(ar[(cnt+1) % n] != mod && ar[(cnt+2) % n] != mod) {
+            cnt = (cnt + 2) % n;
+        } else if(ar[(cnt+1) % n] != mod) {
+            cnt = (cnt+2) % n;
+            while(ar[cnt] == mod) cnt = (cnt + 1) % n;
+        } else {
+            cnt = (cnt+1) % n;
+            while(ar[cnt] == mod) cnt = (cnt + 1) % n;
+            cnt = (cnt+1) % n;
+            while(ar[cnt] == mod) cnt = (cnt + 1) % n;
+        }
+        cout << ar[cnt] << " ";
+        ar[cnt] = mod;
+        v++;
     }
+    cout << "\n";
 }

@@ -1,0 +1,28 @@
+9
+1607
+1
+bbcb-bgah 5070
+1012
+1
+bgah-babc 5070
+1442
+1
+babc-beec 5070
+1826
+1
+beec-bicg 5070
+1515
+1
+bicg-bfbf 5070
+1964
+1
+bfbf-bjge 5070
+1601
+1
+bjge-bgab 5070
+955
+1
+bgab-jff 5070
+956
+1
+jff-jfg 5070

@@ -1,0 +1,601 @@
+200
+6124
+1
+gibh-gbce 8071
+6060
+1
+gbce-gaga 8071
+1317
+1
+gaga-bdbh 8071
+229
+1
+bdbh-ccj 8071
+7256
+1
+ccj-hcfg 8071
+583
+1
+hcfg-fid 8071
+117
+1
+fid-bbh 8071
+3770
+1
+bbh-dhha 8071
+2985
+1
+dhha-cjif 8071
+2935
+1
+cjif-cjdf 8071
+54
+1
+cjdf-fe 8071
+519
+1
+fe-fbj 8071
+5805
+1
+fbj-fiaf 8071
+2594
+1
+fiaf-cfje 8071
+1501
+1
+cfje-bfab 8071
+245
+1
+bfab-cef 8071
+685
+1
+cef-gif 8071
+11
+1
+gif-bb 8071
+2104
+1
+bb-cbae 8071
+3558
+1
+cbae-dffi 8071
+147
+1
+dffi-beh 8071
+2939
+1
+beh-cjdj 8071
+114
+1
+cjdj-bbe 8071
+225
+1
+bbe-ccf 8071
+3421
+1
+ccf-decb 8071
+5260
+1
+decb-fcga 8071
+7554
+1
+fcga-hffe 8071
+7639
+1
+hffe-hgdj 8071
+297
+1
+hgdj-cjh 8071
+497
+1
+cjh-ejh 8071
+6839
+1
+ejh-gidj 8071
+6462
+1
+gidj-gegc 8071
+3231
+1
+gegc-dcdb 8071
+7582
+1
+dcdb-hfic 8071
+897
+1
+hfic-ijh 8071
+4585
+1
+ijh-efif 8071
+7503
+1
+efif-hfad 8071
+1731
+1
+hfad-bhdb 8071
+515
+1
+bhdb-fbf 8071
+1389
+1
+fbf-bdij 8071
+1559
+1
+bdij-bffj 8071
+272
+1
+bffj-chc 8071
+502
+1
+chc-fac 8071
+56
+1
+fac-fg 8071
+2266
+1
+fg-ccgg 8071
+105
+1
+ccgg-baf 8071
+5075
+1
+baf-fahf 8071
+7395
+1
+fahf-hdjf 8071
+652
+1
+hdjf-gfc 8071
+2298
+1
+gfc-ccji 8071
+121
+1
+ccji-bcb 8071
+1441
+1
+bcb-beeb 8071
+6829
+1
+beeb-gicj 8071
+2802
+1
+gicj-ciac 8071
+45
+1
+ciac-ef 8071
+5060
+1
+ef-faga 8071
+643
+1
+faga-ged 8071
+275
+1
+ged-chf 8071
+13
+1
+chf-bd 8071
+1028
+1
+bd-baci 8071
+27
+1
+baci-ch 8071
+856
+1
+ch-ifg 8071
+306
+1
+ifg-dag 8071
+1212
+1
+dag-bcbc 8071
+1505
+1
+bcbc-bfaf 8071
+136
+1
+bfaf-bdg 8071
+6
+1
+bdg-g 8071
+1022
+1
+g-bacc 8071
+4580
+1
+bacc-efia 8071
+32
+1
+efia-dc 8071
+337
+1
+dc-ddh 8071
+656
+1
+ddh-gfg 8071
+791
+1
+gfg-hjb 8071
+667
+1
+hjb-ggh 8071
+5622
+1
+ggh-fgcc 8071
+2224
+1
+fgcc-ccce 8071
+6360
+1
+ccce-gdga 8071
+3548
+1
+gdga-dfei 8071
+2768
+1
+dfei-chgi 8071
+47
+1
+chgi-eh 8071
+3193
+1
+eh-dbjd 8071
+2417
+1
+dbjd-cebh 8071
+108
+1
+cebh-bai 8071
+4844
+1
+bai-eiee 8071
+418
+1
+eiee-ebi 8071
+7460
+1
+ebi-hega 8071
+1239
+1
+hega-bcdj 8071
+7984
+1
+bcdj-hjie 8071
+4157
+1
+hjie-ebfh 8071
+4475
+1
+ebfh-eehf 8071
+6690
+1
+eehf-ggja 8071
+1365
+1
+ggja-bdgf 8071
+4682
+1
+bdgf-egic 8071
+1068
+1
+egic-bagi 8071
+5361
+1
+bagi-fdgb 8071
+1730
+1
+fdgb-bhda 8071
+2592
+1
+bhda-cfjc 8071
+4432
+1
+cfjc-eedc 8071
+310
+1
+eedc-dba 8071
+6805
+1
+dba-giaf 8071
+1990
+1
+giaf-bjja 8071
+927
+1
+bjja-jch 8071
+7181
+1
+jch-hbib 8071
+1785
+1
+hbib-bhif 8071
+7800
+1
+bhif-hiaa 8071
+50
+1
+hiaa-fa 8071
+2453
+1
+fa-cefd 8071
+582
+1
+cefd-fic 8071
+5284
+1
+fic-fcie 8071
+6070
+1
+fcie-gaha 8071
+903
+1
+gaha-jad 8071
+6609
+1
+jad-ggaj 8071
+551
+1
+ggaj-ffb 8071
+171
+1
+ffb-bhb 8071
+2727
+1
+bhb-chch 8071
+1728
+1
+chch-bhci 8071
+7707
+1
+bhci-hhah 8071
+20
+1
+hhah-ca 8071
+987
+1
+ca-jih 8071
+68
+1
+jih-gi 8071
+5807
+1
+gi-fiah 8071
+2202
+1
+fiah-ccac 8071
+190
+1
+ccac-bja 8071
+1634
+1
+bja-bgde 8071
+6925
+1
+bgde-gjcf 8071
+7478
+1
+gjcf-hehi 8071
+149
+1
+hehi-bej 8071
+5971
+1
+bej-fjhb 8071
+6552
+1
+fjhb-gffc 8071
+3458
+1
+gffc-defi 8071
+169
+1
+defi-bgj 8071
+1628
+1
+bgj-bgci 8071
+7076
+1
+bgci-hahg 8071
+4554
+1
+hahg-effe 8071
+1822
+1
+effe-bicc 8071
+6502
+1
+bicc-gfac 8071
+3081
+1
+gfac-daib 8071
+2783
+1
+daib-chid 8071
+975
+1
+chid-jhf 8071
+1264
+1
+jhf-bcge 8071
+5597
+1
+bcge-ffjh 8071
+760
+1
+ffjh-hga 8071
+6075
+1
+hga-gahf 8071
+5515
+1
+gahf-ffbf 8071
+523
+1
+ffbf-fcd 8071
+2754
+1
+fcd-chfe 8071
+847
+1
+chfe-ieh 8071
+4591
+1
+ieh-efjb 8071
+6798
+1
+efjb-ghji 8071
+17
+1
+ghji-bh 8071
+5949
+1
+bh-fjej 8071
+5143
+1
+fjej-fbed 8071
+366
+1
+fbed-dgg 8071
+342
+1
+dgg-dec 8071
+1602
+1
+dec-bgac 8071
+2357
+1
+bgac-cdfh 8071
+4269
+1
+cdfh-ecgj 8071
+1322
+1
+ecgj-bdcc 8071
+1791
+1
+bdcc-bhjb 8071
+1991
+1
+bhjb-bjjb 8071
+1351
+1
+bjjb-bdfb 8071
+159
+1
+bdfb-bfj 8071
+48
+1
+bfj-ei 8071
+1074
+1
+ei-bahe 8071
+4945
+1
+bahe-ejef 8071
+1968
+1
+ejef-bjgi 8071
+4596
+1
+bjgi-efjg 8071
+2005
+1
+efjg-caaf 8071
+2787
+1
+caaf-chih 8071
+5766
+1
+chih-fhgg 8071
+2007
+1
+fhgg-caah 8071
+182
+1
+caah-bic 8071
+1120
+1
+bic-bbca 8071
+384
+1
+bbca-die 8071
+1431
+1
+die-bedb 8071
+5309
+1
+bedb-fdaj 8071
+1117
+1
+fdaj-bbbh 8071
+4459
+1
+bbbh-eefj 8071
+6643
+1
+eefj-gged 8071
+1178
+1
+gged-bbhi 8071
+224
+1
+bbhi-cce 8071
+1697
+1
+cce-bgjh 8071
+4836
+1
+bgjh-eidg 8071
+1453
+1
+eidg-befd 8071
+363
+1
+befd-dgd 8071
+939
+1
+dgd-jdj 8071
+3155
+1
+jdj-dbff 8071
+5048
+1
+dbff-faei 8071
+742
+1
+faei-hec 8071
+33
+1
+hec-dd 8071
+2617
+1
+dd-cgbh 8071
+2261
+1
+cgbh-ccgb 8071
+7332
+1
+ccgb-hddc 8071
+9
+1
+hddc-j 8071
+2747
+1
+j-cheh 8071
+4096
+1
+cheh-eajg 8071
+2160
+1
+eajg-cbga 8071
+5930
+1
+cbga-fjda 8071
+451
+1
+fjda-efb 8071
+111
+1
+efb-bbb 8071
