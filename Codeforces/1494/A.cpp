@@ -18,6 +18,56 @@ int main() {
     int t;
     cin >> t;
     while(t--) {
-        
+        int tot = 0;
+        vector <int> cnt(3);
+        vector <char> st;
+        string s;
+        cin >> s;
+        bool ok = true, check = true;
+        int n = s.length();
+        char op = s[0], en = s[n-1];
+        if(op == en) {
+            cout << "NO\n";
+            continue;
+        }
+        For(i, 0, n) {
+            cnt[s[i]-'A']++;
+        }
+        if((cnt[0] + cnt[1] != cnt[2]) && (cnt[1] + cnt[2] != cnt[0]) && (cnt[0] + cnt[2] != cnt[1])) {
+            cout << "NO\n";
+            continue;
+        }
+        if(cnt[op-'A'] > cnt[en-'A']) {
+            check = false;
+        }
+        if(!check) {
+            For(i, 0, n) {
+                if(s[i] != op) {
+                    s[i] = ')';
+                } else {
+                    s[i] = '(';
+                }
+            }
+        } else {
+            For(i, 0, n) {
+                if(s[i] != en) {
+                    s[i] = '(';
+                } else {
+                    s[i] = ')';
+                }
+            }
+        }
+        For(i, 0, n) {
+            if(s[i] == '(') tot++;
+            else {
+                if(!tot) ok = false;
+                else tot--;
+            }
+        }
+        if(tot || !ok) {
+            cout << "NO\n";
+        } else {
+            cout << "YES\n";
+        }
     }
 }
