@@ -42,14 +42,14 @@ int main() {
         For(i, 1, n+1) pref[i] = ar[i-1] + pref[i-1];
         st.insert(pref[n]);
         solve(ar, pref, 0, n-1);
-        for(auto it: st) cout << it << " ";
-        // For(i, 0, q) {
-        //     cin >> req;
-        //     if(st.find(req) != st.end()) {
-        //         cout << "Yes\n";
-        //     } else {
-        //         cout << "No\n";
-        //     }
-        // }
+        // for(auto it: st) cout << it << " ";
+        For(i, 0, q) {
+            cin >> req;
+            if(st.find(req) != st.end()) {
+                cout << "Yes\n";
+            } else {
+                cout << "No\n";
+            }
+        }
     }
 }
