@@ -35,17 +35,14 @@ int main() {
         }
         n = temp.length();
         For(i, 1, n - 1) {
-            if(temp[i] != '?') {
-                if(temp[i-1] == 'C' && temp[i] == 'J') cost += x;
-                else if(temp[i-1] == 'J' && temp[i] == 'C') cost += y;
-                continue;
-            }
-            if(s[i-1] == s[i+1]) continue;
-            else if(s[i-1] == 'C') cost += x;
-            else cost += y;
+            if(temp[i] != '?' || temp[i-1] == temp[i+1]) continue;
+            if(temp[i-1] == 'C') temp[i] = 'J';
+            else temp[i] = 'C';
         }
-        if(temp[n-2] == 'C' && temp[n-1] == 'J') cost += x;
-        else if(temp[n-2] == 'J' && temp[n-1] == 'C') cost += y;
+        For(i, 1, n) {
+            if(temp[i] == 'C' && temp[i-1] == 'J') cost += y;
+            else if(temp[i] == 'J' && temp[i-1] == 'C') cost += x;
+        }
         cout << "Case #" << T - t << ": " << cost << "\n";
     }
 }
