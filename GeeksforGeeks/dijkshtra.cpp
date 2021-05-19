@@ -32,7 +32,7 @@ int main() {
     int s = 1;
     dist[s] = 0;
     te.insert({0, s});
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n;) {
         pair <int, int> node = *te.begin();
         te.erase(te.begin());
         if(processed[node.se]) continue;
@@ -43,6 +43,7 @@ int main() {
                 te.insert({dist[it.fi], it.fi});
             }
         }
+        i++;
     }
     for(int i = 1; i <= n; i++)
         cout << dist[i] << " ";
