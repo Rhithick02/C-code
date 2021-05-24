@@ -14,24 +14,20 @@ using namespace std;
 typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
-void dfs(vector <int> ar[], int s, vector <bool> &vis) {
-    cout << s << " ";
-    vis[s] = true;
-    for(auto it: ar[s]) {
-        if(!vis[it]) {
-            dfs(ar, it, vis);
-        }
-    }
-}
 int main() {
-    int n, m, u, v;
-    cin >> n >> m;
-    vector <int> ar[n+1];
-    vector <bool> vis(n+1);
-    for(int i = 0; i < m; i++) {
-        cin >> u >> v;
-        ar[u].pb(v);
-        ar[v].pb(u);
+    int t;
+    cin >> t;
+    while(t--) {
+        int n;
+        bool ok = false;
+        cin >> n;
+        for(int i = 0; i <= 1000; i++) {
+            int temp = n - 2020 * i;
+            if(temp < 0) break;
+            if(temp % 2021 == 0) {
+                ok = true;
+            }
+        }
+        cout << (ok ? "YES" : "NO") << "\n";
     }
-    dfs(ar, 1, vis);
 }
