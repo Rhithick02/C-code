@@ -22,7 +22,7 @@ int main() {
         lli sum = 0;
         cin >> n >> m;
         vector <pair<int, int>> ar(n);
-        vector <int> imp, n_imp;
+        vector <lli> imp, n_imp;
         for(int i = 0; i < n; i++) {
             cin >> ar[i].fi;
             sum += ar[i].fi;
@@ -39,19 +39,19 @@ int main() {
         }
         sort(des(imp));
         sort(des(n_imp));
-        for(int i = 1; i < imp.size(); i++) {
-            imp[i] += imp[i-1];
-        }
-        for(int i = 1; i < n_imp.size(); i++) {
-            n_imp[i] += n_imp[i-1];
-        }
-        int pos = lower_bound(asc(n_imp), m) - n_imp.begin();
-        if(pos != n_imp.size())
-            ans = pos + 1;
-        for(int i = 0; i < imp.size(); i++) {
-            int to = m - imp[i];
-            pos = lower_bound(asc(n_imp), to) - n_imp.begin();
-            ans = min(ans, i * 2 + pos + 3);
+        lli sum_b = accumulate(asc(imp), 0ll), sum_a = 0;
+        int i = 0, j = imp.size();
+        for(; i <= n_imp.size(); i++) {
+            while(j > 0 && sum_b + sum_a - imp[j-1] >= m) {
+                j--;
+                sum_b -= imp[j];
+            }
+            if(sum_b + sum_a >= m) {
+                ans = min(ans, 2 * j + i);
+            }
+            if(i != n_imp.size()) {
+                sum_a += n_imp[i];
+            }
         }
         cout << ans << "\n";
     }
