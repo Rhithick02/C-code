@@ -1,6 +1,3 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
 #include<bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
@@ -16,21 +13,16 @@ using namespace std;
 #define MAX 1000001
 typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
-int dp[MAX];
-lli ways(int n) {
-    if(!n) return 1;
+
+lli dp[MAX];
+lli solve(lli n) {
+    if(n == 0) return 1; 
     if(n < 0) return 0;
-    if(dp[n]) return dp[n];
-    lli sum = 0;
-    For(i, 1, 7) {
-        sum += ways(n-i);
-        sum %= mod;
-    }
-    return dp[n] = sum;
+    if(dp[n] != 0) return dp[n];
+    return dp[n] = (solve(n-1) + solve(n-2) + solve(n-3) + solve(n-4) + solve(n-5) + solve(n-6)) % mod;
 }
-int main(){
-    ios::sync_with_stdio(false);
-    int n;
+int main() {
+    lli n;
     cin >> n;
-    cout << ways(n) << endl;
+    cout << solve(n);
 }
