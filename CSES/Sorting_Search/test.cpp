@@ -15,13 +15,7 @@ tree_order_statistics_node_update> indexed_set;
 
 int main(){
     ios::sync_with_stdio(false);
-    set <int> te;
-    For(i, 1 , 6) te.insert(i);
-    for(auto it: te) {
-        if(it == 2) {
-            te.erase(it);
-            cout << "here";
-        }
-        cout << it << " ";
-    }
+    indexed_set te;
+    te.insert(100);
+    cout << te.order_of_key(5);
 }
