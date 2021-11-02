@@ -29,16 +29,18 @@ lli find_sum(vector <lli>& seg, int idx, int _l, int _r, int l, int r) {
         return find_sum(seg, 2*idx+1, _l, mid, l, r) + find_sum(seg, 2*idx+2, mid+1, _r, l, r);
     }
 }
-void update(vector <lli>& seg, int idx, int l, int r, int pos, int dif) {
-    if(pos >= l && pos <= r) {
-        seg[idx] += dif;
-    }
-    if(pos < l || pos > r || l == r) {
+void update(vector <lli>& seg, int idx, int l, int r, int pos, int val) {
+    if(l == r) {
+        seg[idx] = val;
         return;
     }
     int mid = (l + r) / 2;
-    update(seg, 2*idx+1, l, mid, pos, dif);
-    update(seg, 2*idx+2, mid+1, r, pos, dif);
+    if(pos >= l && pos <= mid) {
+        update(seg, 2*idx+1, l, mid, pos, val);
+    } else if(pos > mid && pos <= r) {
+        update(seg, 2*idx+2, mid+1, r, pos, val);
+    }
+    seg[idx] = seg[2*idx+1] + seg[2*idx+2];
 }
 int main() {
     int n, q;
@@ -52,7 +54,7 @@ int main() {
     for(int i = 0, x, k, u; i < q; i++) {
         cin >> x >> k >> u;
         if(x == 1) {
-            update(seg, 0, 0, n-1, k-1, u - ar[k-1]);
+            update(seg, 0, 0, n-1, k-1, u);
             ar[k-1] = u;
         } else {
             cout << find_sum(seg, 0, 0, n-1, k-1, u-1) << "\n";
