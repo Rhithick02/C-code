@@ -55,6 +55,7 @@ int main() {
         if (!vi[ord.back()]) {
             vector<int> temp;
             dfs(ord.back(), temp);
+            sort(temp.begin(), temp.end());
             scc.pb(temp);
         }
         ord.pop_back();
@@ -63,6 +64,7 @@ int main() {
         cout << "YES\n";
     } else {
         cout << "NO\n";
+        sort(scc.begin(), scc.end());
         int node1 = scc[0][0], node2 = scc[1][0], fl = 0;
         vector <int> path;
         vi.assign(n+1, false);
