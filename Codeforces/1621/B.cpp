@@ -17,26 +17,25 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        int n, min_l = INT_MAX, max_r = INT_MIN, cost = INT_MAX;
+        int n;
         cin >> n;
-        set<pair<pair<int, int>, int>> start, finish;
+        set <pair<pair<int, int>, int>> start, finish;
+        map <pair<int, int>, set<int>> mp;
         for (int i = 0, l, r, c; i < n; i++) {
-            bool ok = false;
             cin >> l >> r >> c;
-            min_l = min(min_l, l);
-            max_r = max(max_r, r);
-            if (min_l == l && max_r == r) {
-                cost = min(cost, c);
-                ok = true;
-            }
-            start.insert({{l, c},i});
+            mp[{l, r}].insert(c);
+            start.insert({{l, c}, i});
             finish.insert({{r, -c}, i});
-            if (ok) {
-                cost = min(cost, (start.begin() -> first).second - (finish.rbegin() -> first).second);
+            int L = (start.begin()->first).first;
+            int Lc = (start.begin()->first).second;
+            int R = (finish.rbegin()->first).first;
+            int Rc = (finish.rbegin()->first).second;
+            if (mp[{L, R}].size() != 0) {
+                cout << min(*mp[{L, R}].begin(), Lc-Rc);
             } else {
-                cost = (start.begin() -> first).second - (finish.rbegin() -> first).second;
+                cout << Lc-Rc;
             }
-            cout << cost << endl;
+            cout << "\n";
         }
     }
 }
